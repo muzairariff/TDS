@@ -11,41 +11,45 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
 
   async function submitContact(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (loading) return;
-    setLoading(true);
+  e.preventDefault();
+  if (loading) return;
+  setLoading(true);
 
-    const form = e.currentTarget;
-    const payload = {
-      firstName: (form.elements.namedItem("firstName") as HTMLInputElement)?.value,
-      lastName: (form.elements.namedItem("lastName") as HTMLInputElement)?.value,
-      email: (form.elements.namedItem("email") as HTMLInputElement)?.value,
-      phone: (form.elements.namedItem("phone") as HTMLInputElement)?.value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement)?.value,
-    };
+  const form = e.currentTarget;
+  const payload = {
+    firstName: (form.elements.namedItem("firstName") as HTMLInputElement)?.value,
+    lastName: (form.elements.namedItem("lastName") as HTMLInputElement)?.value,
+    email: (form.elements.namedItem("email") as HTMLInputElement)?.value,
+    phone: (form.elements.namedItem("phone") as HTMLInputElement)?.value,
+    message: (form.elements.namedItem("message") as HTMLTextAreaElement)?.value,
+  };
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) {
-        // show the real SMTP error from backend
-        throw new Error(data?.error || "Failed to send email");
-      }
-
-      toast.success("✅ Email sent successfully!");
-      form.reset();
-    } catch (err: any) {
-      toast.error(`❌ ${err?.message || "Something went wrong."}`);
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(data?.error || "Failed to send email");
     }
+
+    toast.success("✅ Email sent successfully!");
+    form.reset();
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      toast.error(`❌ ${err.message}`);
+    } else {
+      toast.error("❌ Something went wrong.");
+    }
+  } finally {
+    setLoading(false);
   }
+}
+
 
   return (
     <div className="text-gray-900">

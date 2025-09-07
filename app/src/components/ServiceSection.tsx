@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import {
   BsShieldLock,
   BsCloudFill,
@@ -64,14 +64,13 @@ const services: Service[] = [
   },
 ];
 
-const appear = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut", delay: i },
-  }),
-};
+// ✅ Safe MotionProps factory
+const appear = (delay = 0): MotionProps => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut", delay },
+  viewport: { once: true, amount: 0.3 },
+});
 
 export default function ServicesSection() {
   return (
@@ -83,16 +82,17 @@ export default function ServicesSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Title */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
+          {...appear(0)}
           className="text-center mb-16"
         >
           <span className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-1 text-sm font-semibold text-white shadow">
             Our Expertise
           </span>
           <h2 className="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-            Next-Gen <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Technology Services</span>
+            Next-Gen{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Technology Services
+            </span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
             Trusted by enterprises to build secure, scalable, and innovative digital ecosystems.
@@ -104,11 +104,7 @@ export default function ServicesSection() {
           {services.map(({ title, desc, href, Icon, delay }) => (
             <motion.article
               key={title}
-              custom={delay ?? 0}
-              variants={appear}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
+              {...appear(delay ?? 0)}
               className="
                 group relative flex flex-col h-full rounded-2xl
                 border border-gray-200/50 bg-white/80 backdrop-blur-md

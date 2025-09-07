@@ -1,26 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/app/src/components/Navbar";
 import Footer from "@/app/src/components/Footer";
 
 // Realistic icons
+import { FaUsers, FaLaptopCode } from "react-icons/fa";
 import {
-  FaUsers, FaVial, FaLaptopCode
-} from "react-icons/fa";
-import {
-  SiFigma, SiSketch, SiAdobexd, SiAdobephotoshop, SiAdobeillustrator
+  SiFigma,
+  SiSketch,
+  SiAdobexd,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
 } from "react-icons/si";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: "easeOut" },
-  }),
-};
+// ✅ Motion utility
+const fadeUp = (delay = 0): MotionProps => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: "easeOut" },
+  viewport: { once: true },
+});
 
 export default function UIDesignPage() {
   return (
@@ -31,16 +32,9 @@ export default function UIDesignPage() {
       <section className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-28 grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={0}
-          >
+          <motion.div {...fadeUp(0)}>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-              Extraordinary{" "}
-              <span className="text-blue-600">UI/UX Design</span>
+              Extraordinary <span className="text-blue-600">UI/UX Design</span>
             </h1>
             <p className="mt-6 text-lg text-gray-600 max-w-xl">
               We create human-centered designs that are visually stunning,
@@ -86,7 +80,8 @@ export default function UIDesignPage() {
             Why Choose Our UI/UX Design Services?
           </h2>
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-            We focus on creating meaningful, interactive, and user-first experiences.
+            We focus on creating meaningful, interactive, and user-first
+            experiences.
           </p>
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -108,11 +103,7 @@ export default function UIDesignPage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                custom={i}
+                {...fadeUp(i * 0.15)}
                 className="p-8 rounded-lg bg-white shadow hover:shadow-md transition text-center"
               >
                 <div className="text-4xl">{item.icon}</div>
@@ -133,7 +124,8 @@ export default function UIDesignPage() {
             Design Tools We Use
           </h2>
           <p className="mt-3 text-gray-600">
-            We master the industry’s most powerful tools to deliver top-class designs.
+            We master the industry’s most powerful tools to deliver top-class
+            designs.
           </p>
 
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
@@ -170,7 +162,8 @@ export default function UIDesignPage() {
             Our Design Process
           </h2>
           <p className="mt-3 text-gray-600">
-            A structured and transparent workflow ensures beautiful and usable results.
+            A structured and transparent workflow ensures beautiful and usable
+            results.
           </p>
 
           <div className="mt-16 relative">
@@ -185,11 +178,7 @@ export default function UIDesignPage() {
               ].map((step, i) => (
                 <motion.div
                   key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  custom={i}
+                  {...fadeUp(i * 0.15)}
                   whileHover={{ scale: 1.05 }}
                   className="flex flex-col items-center text-center"
                 >

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion,Variants } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/app/src/components/Navbar";
 import Footer from "@/app/src/components/Footer";
@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import { FaSearch, FaPencilRuler, FaCode, FaVial, FaCloudUploadAlt, FaHeadset } from "react-icons/fa";
 
-const fadeUp = {
+const fadeUp:Variants = {
   hidden: { opacity: 0, y: 30 },
   show: (i: number) => ({
     opacity: 1,

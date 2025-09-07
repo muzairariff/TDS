@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import { Cpu, Database, Smartphone, Palette, Code, Brain } from "lucide-react";
 
 const skills = [
@@ -36,15 +36,13 @@ const skills = [
   },
 ];
 
-// Animation settings
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
-  }),
-};
+// ✅ MotionProps factory instead of Variants
+const cardAnim = (delay = 0): MotionProps => ({
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.6, ease: "easeOut" },
+  viewport: { once: true, amount: 0.3 },
+});
 
 export default function SkillsSection() {
   return (
@@ -70,11 +68,7 @@ export default function SkillsSection() {
           {skills.map(({ label, desc, Icon }, idx) => (
             <motion.div
               key={label}
-              custom={idx}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
+              {...cardAnim(idx * 0.2)} // ✅ cleaner, type-safe
               className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-xl transition"
             >
               {/* Icon with hover animation */}

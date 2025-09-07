@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion,Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../src/components/Navbar";
@@ -8,12 +8,12 @@ import Footer from "../src/components/Footer";
 import { FaLightbulb, FaAward, FaHandshake, FaUsers } from "react-icons/fa";
 
 // Reusable fade-up animation
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: (i: number) => ({
+  show: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: "easeOut" },
+    transition: { duration: 0.6, delay: i * 0.15, ease: [0.42, 0, 0.58, 1] }, // ✅ safe easing
   }),
 };
 
@@ -23,7 +23,7 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative overflow-hidden">
+         <section className="relative overflow-hidden">
         {/* floating gradient blobs */}
         <motion.div
           animate={{ y: [0, -25, 0] }}
@@ -87,7 +87,6 @@ export default function AboutUsPage() {
           </motion.div>
         </div>
       </section>
-
      
     {/* OUR PROCESS */}
 <section className="bg-gray-50 py-20">

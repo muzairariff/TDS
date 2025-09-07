@@ -1,8 +1,8 @@
-// app/operations/page.tsx (or wherever you route it)
+// app/service/operation/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionProps } from "framer-motion";
 import CountUp from "react-countup";
 import Navbar from "@/app/src/components/Navbar";
 import Footer from "@/app/src/components/Footer";
@@ -23,10 +23,11 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 
-const fadeUp = (delay = 0) => ({
+// ✅ Type-safe reusable fade-up animation
+const fadeUp = (delay = 0): MotionProps => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut", delay },
+  transition: { duration: 0.6, ease: [0.42, 0, 1, 1], delay },
   viewport: { once: true, amount: 0.35 },
 });
 
@@ -54,7 +55,10 @@ export default function OperationsPage() {
   ];
   const [tIndex, setTIndex] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setTIndex((p) => (p + 1) % testimonials.length), 6000);
+    const id = setInterval(
+      () => setTIndex((p) => (p + 1) % testimonials.length),
+      6000
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -114,30 +118,12 @@ export default function OperationsPage() {
   ];
 
   const steps = [
-    {
-      title: "Discovery",
-      desc: "Assess scope, risks, SLAs, compliance & site readiness.",
-    },
-    {
-      title: "Planning",
-      desc: "Rosters, SOPs, comms matrix, success metrics, & runbooks.",
-    },
-    {
-      title: "Onboarding",
-      desc: "Team allocation, training, vendor setup, tool access.",
-    },
-    {
-      title: "Execution",
-      desc: "Live operations, ticketing, dispatch, & proactive monitoring.",
-    },
-    {
-      title: "Reporting",
-      desc: "Daily/weekly reports, KPIs, incident deep-dives, insights.",
-    },
-    {
-      title: "Optimization",
-      desc: "Continuous improvement, automation, cost & quality gains.",
-    },
+    { title: "Discovery", desc: "Assess scope, risks, SLAs, compliance & site readiness." },
+    { title: "Planning", desc: "Rosters, SOPs, comms matrix, success metrics, & runbooks." },
+    { title: "Onboarding", desc: "Team allocation, training, vendor setup, tool access." },
+    { title: "Execution", desc: "Live operations, ticketing, dispatch, & proactive monitoring." },
+    { title: "Reporting", desc: "Daily/weekly reports, KPIs, incident deep-dives, insights." },
+    { title: "Optimization", desc: "Continuous improvement, automation, cost & quality gains." },
   ];
 
   const capabilities = [
@@ -161,7 +147,7 @@ export default function OperationsPage() {
         <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
         <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 grid gap-10 md:grid-cols-2 items-center">
-          <div {...fadeUp(0)}>
+          <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
               <FaChartLine className="h-3.5 w-3.5" />
               Operations & Service Delivery
@@ -173,25 +159,11 @@ export default function OperationsPage() {
               We plan, staff, execute, and continually optimize multi-site operations with
               strong governance, data-driven reporting, and proactive communication.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-              >
-                Talk to Operations
-              </a>
-              <a
-                href="/service/webdevelopment"
-                className="inline-flex items-center justify-center rounded-full border border-blue-300 px-6 py-3 text-sm font-semibold text-blue-700 hover:bg-blue-50"
-              >
-                View Services
-              </a>
-            </div>
-          </div>
-          <div {...fadeUp(0.1)} className="relative">
+          </motion.div>
+          <motion.div {...fadeUp(0.1)} className="relative">
             <div className="rounded-3xl border border-blue-100 bg-white/80 p-6 shadow-xl backdrop-blur">
               <div className="grid grid-cols-2 gap-4">
-                {capabilities.map((c, i) => (
+                {capabilities.map((c) => (
                   <div
                     key={c.title}
                     className="rounded-2xl border border-gray-100 p-5 hover:shadow-md transition bg-white"
@@ -203,22 +175,21 @@ export default function OperationsPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ROLES GRID */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12" {...fadeUp(0)}>
+          <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <h2 className="text-3xl font-extrabold">
               Core <span className="text-blue-600">Operational Roles</span>
             </h2>
             <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-              Everything from security and staffing to analytics and vendor management —
-              tightly aligned to your SLAs.
+              Everything from security and staffing to analytics and vendor management — tightly aligned to your SLAs.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             {roles.map((r, i) => (
@@ -230,14 +201,13 @@ export default function OperationsPage() {
                 <r.icon className="text-blue-600 text-3xl" />
                 <h3 className="mt-3 text-lg font-semibold">{r.title}</h3>
                 <p className="text-gray-600 text-sm mt-1">{r.desc}</p>
-                <div className="mt-4 h-[2px] w-0 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all group-hover:w-16" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* COUNTERS (soft blue background) */}
+      {/* COUNTERS */}
       <section className="py-16" style={{ background: "#eaf4ff" }}>
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -261,16 +231,15 @@ export default function OperationsPage() {
         </div>
       </section>
 
-      {/* WORKFLOW / TIMELINE */}
+      {/* WORKFLOW */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12" {...fadeUp(0)}>
+          <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <h2 className="text-3xl font-extrabold">Operational Workflow</h2>
             <p className="mt-3 text-gray-600">How we deliver consistent, high-quality outcomes.</p>
-          </div>
+          </motion.div>
 
           <div className="relative max-w-4xl mx-auto">
-            {/* vertical line */}
             <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-blue-100 md:left-1/2 md:-translate-x-1/2" />
             <div className="space-y-8">
               {steps.map((s, i) => (
@@ -279,10 +248,9 @@ export default function OperationsPage() {
                   {...fadeUp(i * 0.05)}
                   className={`relative md:w-1/2 ${i % 2 ? "md:ml-auto md:pl-10" : "md:pr-10"}`}
                 >
-                  {/* dot */}
                   <div
-                    className={`absolute left-0 md:left-auto md:right-[-7px] top-2 h-3.5 w-3.5 rounded-full bg-blue-600 ${
-                      i % 2 ? "md:right-[-7px]" : "md:left-[-7px] md:right-auto"
+                    className={`absolute left-0 md:left-auto top-2 h-3.5 w-3.5 rounded-full bg-blue-600 ${
+                      i % 2 ? "md:right-[-7px]" : "md:left-[-7px]"
                     }`}
                   />
                   <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
@@ -299,10 +267,10 @@ export default function OperationsPage() {
       {/* LEADERSHIP */}
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12" {...fadeUp(0)}>
+          <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <h2 className="text-3xl font-extrabold">Leadership</h2>
             <p className="mt-3 text-gray-600">Seasoned operators driving outcomes and accountability.</p>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {leaders.map((m, i) => (
@@ -327,9 +295,9 @@ export default function OperationsPage() {
       {/* TESTIMONIALS */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-10" {...fadeUp(0)}>
+          <motion.div className="text-center mb-10" {...fadeUp(0)}>
             <h2 className="text-3xl font-extrabold">What Clients Say</h2>
-          </div>
+          </motion.div>
 
           <div className="relative min-h-[220px]">
             <AnimatePresence mode="wait">
@@ -352,7 +320,6 @@ export default function OperationsPage() {
               </motion.div>
             </AnimatePresence>
 
-            {/* dots */}
             <div className="mt-6 flex justify-center gap-2">
               {testimonials.map((_, i) => (
                 <button
@@ -371,18 +338,16 @@ export default function OperationsPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r  " />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r" />
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
           <div className="grid items-center gap-6 md:grid-cols-2">
-            <div>
-              <h3 className="text-2xl font-extrabold">
-                Ready to elevate your Operations?
-              </h3>
+            <motion.div {...fadeUp(0)}>
+              <h3 className="text-2xl font-extrabold">Ready to elevate your Operations?</h3>
               <p className="mt-2 text-gray-600">
                 We’ll review your goals and share a concrete plan within 48 hours.
               </p>
-            </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
+            </motion.div>
+            <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-3 md:justify-end">
               <a
                 href="/contact"
                 className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700"
@@ -395,7 +360,7 @@ export default function OperationsPage() {
               >
                 Learn more
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
