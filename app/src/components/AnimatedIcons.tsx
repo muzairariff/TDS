@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, TargetAndTransition, Transition } from "framer-motion";
 import { ComponentType } from "react";
 
 type Props = {
@@ -12,9 +12,9 @@ type Props = {
 };
 
 export default function AnimatedIcon({ Icon, className, pulse, float, spin }: Props) {
-  // Define base animation
-  const animate: any = {};
-  const transition: any = { duration: 0.4, ease: "easeOut" };
+  // Define base animation types
+  const animate: TargetAndTransition = {};
+  const transition: Transition = { duration: 0.4, ease: "easeOut" };
 
   if (pulse) {
     animate.scale = [1, 1.04, 1];
