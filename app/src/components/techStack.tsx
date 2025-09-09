@@ -5,9 +5,10 @@ import { FaReact, FaNodeJs, FaLaravel, FaJava, FaPhp } from "react-icons/fa";
 import { 
   SiNextdotjs, SiFlutter, SiAngular, 
   // comment these if your version doesn’t have them
-  // SiOpenai, 
-  // SiAmazonaws,
-  SiTailwindcss, SiTypescript, SiPrisma, SiVercel, SiPython 
+   SiOpenai, 
+  
+  SiTailwindcss, SiTypescript, SiPrisma, SiVercel, SiPython, 
+  SiHeroku
 } from "react-icons/si";
 
 const techStack = [
@@ -24,9 +25,9 @@ const techStack = [
   { icon: FaLaravel, label: "Laravel", color: "#FF2D20" },
   { icon: SiAngular, label: "Angular", color: "#DD0031" },
   { icon: SiFlutter, label: "Flutter", color: "#02569B" },
-  // if these crash → remove them
-  // { icon: SiAmazonaws, label: "AWS", color: "#FF9900" },
-  // { icon: SiOpenai, label: "OpenAI", color: "#10A37F" },
+  
+  { icon: SiHeroku, label: "Heroku", color: "#F38020" },
+  { icon: SiOpenai, label: "OpenAI", color: "#10A37F" },
 ];
 
 export default function TechStackSection() {
