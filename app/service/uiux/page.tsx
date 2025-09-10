@@ -25,27 +25,54 @@ export default function UIDesignPage() {
 
       {/* HERO (text left, image right) */}
       <section className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center">
-          {/* Left */}
-          <motion.div {...fadeUp(0)} className="order-1">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight [text-wrap:balance]">
-              Extraordinary <span className="text-blue-600">UI/UX Design</span>
-            </h1>
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-xl">
-              We create human-centered designs that are visually stunning, intuitive, and optimized for real-world results.
-            </p>
-            <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
-              <Link href="/contact" className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold transition shadow-lg hover:shadow-blue-200 text-center">Start Your Project</Link>
-              <Link href="/portfolio" className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold transition text-center">View Portfolio</Link>
-            </div>
-          </motion.div>
-
-          {/* Right */}
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="order-2 relative rounded-xl overflow-hidden mx-auto w-full h-[260px] sm:h-[340px] md:h-[440px] lg:h-[500px] max-w-2xl">
-            <img src="/assets/images/uiux-hero.png" alt="UI/UX Design" className="w-full h-full object-cover rounded-xl shadow-lg" loading="eager" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw" />
-          </motion.div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 md:pb-28">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center">
+      {/* Left */}
+      <motion.div {...fadeUp(0)} className="order-1">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight [text-wrap:balance]">
+          Human-Centered <span className="text-blue-600">UI/UX</span> That Drives Results
+        </h1>
+        <p className="mt-5 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-xl">
+          We create human-centered designs that are visually stunning, intuitive, and optimized for real-world performance.
+        </p>
+        <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
+          <Link
+            href="/contact"
+            className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold transition shadow-lg hover:shadow-blue-200 text-center"
+          >
+            Start Your Project
+          </Link>
+          <Link
+            href="/portfolio"
+            className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold transition text-center"
+          >
+            View Portfolio
+          </Link>
         </div>
-      </section>
+      </motion.div>
+
+      {/* Right */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="order-2 relative rounded-xl overflow-hidden mx-auto w-full max-w-2xl
+                   h-[260px] sm:h-[340px] md:h-[440px] lg:h-[500px]"
+      >
+        {/* If you already use next/image on this page, you can swap <img> with <Image> */}
+        <img
+          src="/assets/images/uiux-hero.png"
+          alt="UI/UX Design"
+          className="w-full h-full object-cover rounded-xl shadow-lg"
+          loading="eager"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw"
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
+
 
       {/* WHY CHOOSE US */}
       <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
