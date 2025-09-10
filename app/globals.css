@@ -12,8 +12,14 @@ body {
   @apply bg-white text-gray-900;
 }
 
-html { scroll-behavior: smooth; }
-::selection { background: #1D4ED8; color: white; }
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #1D4ED8;
+  color: white;
+}
 
 :root {
   --background: #ffffff;

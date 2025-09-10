@@ -46,15 +46,15 @@ function FAQItem({
     >
       <button
         onClick={onClick}
-        className="flex w-full items-center justify-between px-6 py-4 text-left"
+        className="flex w-full items-center justify-between px-5 sm:px-6 py-4 text-left"
+        aria-expanded={isOpen}
+        aria-controls={`faq-${question}`}
       >
-        <span className="text-lg font-semibold text-gray-900">{question}</span>
+        <span className="text-base sm:text-lg font-semibold text-gray-900">{question}</span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.35 }}
-          className={`p-1 rounded-full ${
-            isOpen ? "bg-blue-500 text-white" : "bg-gray-100 text-blue-500"
-          }`}
+          transition={{ duration: 0.3 }}
+          className={`p-1.5 rounded-full ${isOpen ? "bg-blue-500 text-white" : "bg-gray-100 text-blue-500"}`}
         >
           <ChevronDown className="h-5 w-5" />
         </motion.span>
@@ -63,11 +63,12 @@ function FAQItem({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={`faq-${question}`}
             initial={{ opacity: 0, maxHeight: 0 }}
             animate={{ opacity: 1, maxHeight: 500 }}
             exit={{ opacity: 0, maxHeight: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="overflow-hidden px-6 pb-4"
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            className="overflow-hidden px-5 sm:px-6 pb-4"
           >
             <p className="text-gray-600 leading-relaxed">{answer}</p>
           </motion.div>
@@ -81,20 +82,18 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="relative py-20 sm:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden overflow-y-visible">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-14 sm:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
             Frequently Asked <span className="text-blue-600">Questions</span>
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Everything you need to know about our services, support, and
-            solutions. If you have more questions, feel free to contact us.
+            Everything you need to know about our services, support, and solutions. If you have more questions,
+            feel free to contact us.
           </p>
         </div>
 
-        {/* FAQ Items */}
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <FAQItem

@@ -64,7 +64,6 @@ const services: Service[] = [
   },
 ];
 
-// ✅ Safe MotionProps factory
 const appear = (delay = 0): MotionProps => ({
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -74,62 +73,52 @@ const appear = (delay = 0): MotionProps => ({
 
 export default function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white py-24">
+    <section className="relative overflow-x-hidden overflow-y-visible bg-gradient-to-b from-white via-gray-50 to-white py-20 sm:py-24">
       {/* Background accents */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl -z-10 animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl -z-10 animate-pulse delay-1000" />
+      <div className="pointer-events-none absolute top-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl -z-10" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl -z-10" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Title */}
-        <motion.div
-          {...appear(0)}
-          className="text-center mb-16"
-        >
+        <motion.div {...appear(0)} className="text-center mb-14 sm:mb-16">
           <span className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-1 text-sm font-semibold text-white shadow">
             Our Expertise
           </span>
-          <h2 className="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
             Next-Gen{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Technology Services
             </span>
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-gray-600">
             Trusted by enterprises to build secure, scalable, and innovative digital ecosystems.
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
           {services.map(({ title, desc, href, Icon, delay }) => (
             <motion.article
               key={title}
               {...appear(delay ?? 0)}
-              className="
-                group relative flex flex-col h-full rounded-2xl
-                border border-gray-200/50 bg-white/80 backdrop-blur-md
-                p-8 shadow-md transition duration-300
-                hover:-translate-y-2 hover:shadow-2xl hover:border-blue-500/50
-              "
+              className="group relative flex flex-col h-full rounded-2xl border border-gray-200/60 bg-white/80 backdrop-blur-md p-7 sm:p-8 shadow-md transition hover:-translate-y-2 hover:shadow-2xl hover:border-blue-500/50"
             >
-              {/* Gradient hover sweep */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50" />
 
-              {/* Icon */}
               <div className="relative mb-6">
                 <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                   <Icon className="h-8 w-8" />
                 </div>
               </div>
 
-              {/* Content */}
               <div className="relative flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{title}</h3>
                 <p className="mt-3 text-gray-600 leading-relaxed">{desc}</p>
 
                 <div className="mt-auto pt-6">
                   <Link
                     href={href}
+                    aria-label={`Learn more about ${title}`}
                     className="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-indigo-600 transition"
                   >
                     Learn More

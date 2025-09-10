@@ -156,7 +156,7 @@ export default function UIDesignPage() {
               },
               {
                 title: "Design System",
-                items: ["Tokens", "Components", "Patterns (Storybook)"] ,
+                items: ["Tokens", "Components", "Patterns (Storybook)"],
               },
               {
                 title: "Handoff Kit",

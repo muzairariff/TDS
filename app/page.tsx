@@ -16,26 +16,22 @@ import SkillsSection from "./src/components/SkillSection";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* NAVBAR */}
+
       <Navbar />
 
-      {/* HERO (sync split carousel: left text + right image) */}
-      <HeroSplitCarousel />
-<section>
-  <TechIconsSlider />
-</section>
-      {/* SERVICES */}
-     <ServicesSection />
-     <SkillsSection />
-<TestimonialCarousel />
-<FAQSection />
 
-      {/* (Optional) FOOTER */}
-      {/* <footer className="border-t border-gray-100 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 text-sm text-gray-500 text-center">
-          © {new Date().getFullYear()} Your Company. All rights reserved.
-        </div>
-      </footer> */}
+      <HeroSplitCarousel />
+      <section>
+        <TechIconsSlider />
+      </section>
+
+      <ServicesSection />
+      <SkillsSection />
+
+      <TestimonialCarousel />
+      <FAQSection />
+
+
       <Footer />
     </main>
   );
