@@ -249,9 +249,8 @@ export default function OperationsPage() {
                   className={`relative md:w-1/2 ${i % 2 ? "md:ml-auto md:pl-10" : "md:pr-10"}`}
                 >
                   <div
-                    className={`absolute left-0 md:left-auto top-2 h-3.5 w-3.5 rounded-full bg-blue-600 ${
-                      i % 2 ? "md:right-[-7px]" : "md:left-[-7px]"
-                    }`}
+                    className={`absolute left-0 md:left-auto top-2 h-3.5 w-3.5 rounded-full bg-blue-600 ${i % 2 ? "md:right-[-7px]" : "md:left-[-7px]"
+                      }`}
                   />
                   <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
                     <h3 className="font-semibold">{s.title}</h3>
@@ -325,9 +324,8 @@ export default function OperationsPage() {
                 <button
                   key={i}
                   onClick={() => setTIndex(i)}
-                  className={`h-2.5 w-2.5 rounded-full transition ${
-                    i === tIndex ? "bg-blue-600" : "bg-gray-300 hover:bg-gray-400"
-                  }`}
+                  className={`h-2.5 w-2.5 rounded-full transition ${i === tIndex ? "bg-blue-600" : "bg-gray-300 hover:bg-gray-400"
+                    }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}

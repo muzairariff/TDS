@@ -17,17 +17,12 @@ export default function HeroSplitCarousel() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(
-      () => setIndex((p) => (p + 1) % bgImages.length),
-      5000
-    );
+    const id = setInterval(() => setIndex((p) => (p + 1) % bgImages.length), 5000);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <section
-      className={`${syne.className} relative text-white overflow-hidden min-h-screen`}
-    >
+    <section className={`${syne.className} relative text-white overflow-hidden min-h-screen`}>
       {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[#121820]" />
@@ -50,17 +45,16 @@ export default function HeroSplitCarousel() {
             />
           </motion.div>
         </AnimatePresence>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ backgroundColor: "#121820cc" }}
-        />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: "#121820cc" }} />
       </div>
 
       {/* CONTENT */}
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 items-center gap-10 px-6 lg:px-12 py-20 md:py-28">
+      {/* Match Navbar's container paddings and add comfy top gap */}
+<div className="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 items-start gap-10 px-4 sm:px-6 lg:px-8 pt-40 sm:pt-48 md:pt-56 lg:pt-36 xl:pt-36 pb-16 md:pb-24">
+
         {/* LEFT */}
-        <div className="flex justify-center">
-          <div className="w-full max-w-xl md:max-w-2xl bg-black/40 rounded-2xl p-8 md:p-10 space-y-6 backdrop-blur-sm text-center md:text-left">
+        <div className="flex justify-start">
+          <div className="w-full max-w-xl md:max-w-2xl bg-black/40 rounded-2xl p-6 sm:p-8 md:p-10 space-y-6 backdrop-blur-sm text-left">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               Driving Businesses Forward <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">
@@ -68,8 +62,8 @@ export default function HeroSplitCarousel() {
               </span>
             </h1>
             <p className="text-gray-100/90 text-lg sm:text-xl leading-relaxed">
-              We specialize in crafting innovative IT solutions tailored to
-              your business needs. Let’s build something exceptional together.
+              We specialize in crafting innovative IT solutions tailored to your business needs.
+              Let’s build something exceptional together.
             </p>
             <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-cyan-300 text-white font-medium hover:bg-cyan-300/20 transition">
               Let’s Talk
