@@ -17,6 +17,7 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 
+
 // Reusable fade-up animation
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -27,93 +28,85 @@ const fadeUp: Variants = {
   }),
 };
 
+
 export default function AboutUsPage() {
   return (
     <main className="bg-white text-gray-900">
       <Navbar />
 
-      {/* HERO */}
-<section className="relative overflow-hidden">
+    {/* HERO */}
+<section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50">
   {/* floating gradient blobs */}
   <motion.div
     animate={{ y: [0, -25, 0] }}
     transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-    className="pointer-events-none absolute top-10 sm:top-20 left-4 sm:left-10 w-56 sm:w-72 h-56 sm:h-72 bg-blue-200 rounded-full blur-3xl opacity-30 -z-10"
+    className="pointer-events-none absolute top-10 left-4 w-40 h-40 sm:w-56 sm:h-56 bg-blue-200 rounded-full blur-3xl opacity-30 -z-10"
   />
   <motion.div
     animate={{ y: [0, 25, 0] }}
     transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-    className="pointer-events-none absolute bottom-10 sm:bottom-20 right-4 sm:right-10 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-200 rounded-full blur-3xl opacity-30 -z-10"
+    className="pointer-events-none absolute bottom-10 right-4 w-52 h-52 sm:w-72 sm:h-72 bg-cyan-200 rounded-full blur-3xl opacity-30 -z-10"
   />
 
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8
-                  py-12 sm:py-16 md:py-24
-                  grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
-    {/* Text (always left) */}
-    <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      custom={0}
-      variants={fadeUp}
-      className="order-1"
-    >
-      <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight [text-wrap:balance]">
-        About <span className="text-primary">TechDirectSupport</span>
-      </h1>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      {/* TEXT */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        variants={fadeUp}
+        className="text-center lg:text-left"
+      >
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mt-5">
+          About <span className="text-primary">TechDirectSupport</span>
+        </h1>
 
-      <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 leading-relaxed
-                    max-w-[72ch]">
-        We are a passionate team of <span className="font-semibold">developers, designers, and innovators</span>,
-        crafting world-class digital solutions. From apps to enterprise-grade platforms,
-        we empower businesses to grow with technology.
-      </p>
+        <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+          We are a passionate team of{" "}
+          <span className="font-semibold">developers, designers, and innovators</span>, 
+          crafting world-class digital solutions. From apps to enterprise-grade platforms, 
+          we empower businesses to grow with technology.
+        </p>
 
-      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
-        <Link
-          href="/contact"
-          className="w-full sm:w-auto rounded-full bg-primary px-6 sm:px-7 py-3
-                     text-sm font-semibold text-white shadow hover:bg-accent transition text-center"
-        >
-          Let’s Work Together
-        </Link>
-        <Link
-          href="/portfolio"
-          className="w-full sm:w-auto rounded-full border border-primary px-6 sm:px-7 py-3
-                     text-sm font-semibold text-primary hover:bg-primary/10 transition text-center"
-        >
-          Our Work
-        </Link>
-      </div>
-    </motion.div>
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <Link
+            href="/contact"
+            className="rounded-full bg-primary px-6 py-3 text-sm sm:text-base font-semibold text-white shadow hover:bg-accent transition"
+          >
+            Let’s Work Together
+          </Link>
+          <Link
+            href="/portfolio"
+            className="rounded-full border border-primary px-6 py-3 text-sm sm:text-base font-semibold text-primary hover:bg-primary/10 transition"
+          >
+            Our Work
+          </Link>
+        </div>
+      </motion.div>
 
-    {/* Image (always right) */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="order-2 relative overflow-hidden rounded-3xl shadow-2xl
-                 w-full
-                 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]    /* responsive ratio */
-                 max-h-[70vh]"                                     /* prevents over-tall on tiny screens */
-    >
-      <Image
-        src="/assets/images/hero-about.png"
-        alt="Our team"
-        fill
-        className="object-cover"
-        priority
-        sizes="(max-width: 640px) 100vw,
-               (max-width: 1024px) 90vw,
-               50vw"
-      />
-    </motion.div>
+      {/* IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] rounded-2xl shadow-xl overflow-hidden"
+      >
+        <Image
+          src="/assets/images/hero-about.png"
+          alt="Our team"
+          fill
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+    </div>
   </div>
 </section>
 
 
-      {/* QUICK STATS */}
+     {/* QUICK STATS */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 rounded-2xl border border-gray-100 p-6 sm:p-8 shadow-sm">
