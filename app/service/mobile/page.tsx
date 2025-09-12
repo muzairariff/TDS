@@ -74,7 +74,7 @@ export default function MobileAppDevelopmentPage() {
             className="order-2 lg:order-1"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight [text-wrap:balance]">
-              Extraordinary <span className="text-blue-600">Mobile App Development</span>
+              <span className="text-blue-600">Mobile App Development</span>
             </h1>
             <p className="mt-6 text-base sm:text-lg text-gray-600 max-w-2xl">
               We create impactful, scalable, and innovative mobile apps for iOS, Android, and cross‑platform needs.

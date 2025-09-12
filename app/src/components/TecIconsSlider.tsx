@@ -1,7 +1,11 @@
 "use client";
 
-import { FaReact, FaNodeJs, FaLaravel, FaJava, FaPhp } from "react-icons/fa";
-import { SiNextdotjs, SiFlutter, SiAngular, SiOpenai } from "react-icons/si";
+import { 
+  FaReact, FaNodeJs, FaLaravel, FaJava, FaPhp, FaPython, FaHtml5, FaCss3Alt, FaGitAlt 
+} from "react-icons/fa";
+import { 
+  SiNextdotjs, SiFlutter, SiAngular, SiOpenai, SiTypescript, SiMongodb, SiMysql, SiTailwindcss, SiDjango 
+} from "react-icons/si";
 import { motion } from "framer-motion";
 
 const techStack = [
@@ -14,32 +18,43 @@ const techStack = [
   { icon: <FaLaravel />, label: "Laravel", color: "#FF2D20" },
   { icon: <FaReact />, label: "React", color: "#61DBFB" },
   { icon: <SiNextdotjs />, label: "Next.js", color: "#000000" },
+  { icon: <FaPython />, label: "Python", color: "#3776AB" },
+  { icon: <SiTypescript />, label: "TypeScript", color: "#3178C6" },
+  { icon: <SiMongodb />, label: "MongoDB", color: "#47A248" },
+  { icon: <SiMysql />, label: "MySQL", color: "#4479A1" },
+  { icon: <FaHtml5 />, label: "HTML5", color: "#E34F26" },
+  { icon: <FaCss3Alt />, label: "CSS3", color: "#1572B6" },
+  { icon: <SiTailwindcss />, label: "TailwindCSS", color: "#38BDF8" },
+  { icon: <SiDjango />, label: "Django", color: "#092E20" },
+  { icon: <FaGitAlt />, label: "Git", color: "#F1502F" },
 ];
 
 export default function TechIconsSlider() {
   return (
-    <section className="py-12 overflow-hidden">
+    <section className="py-12 overflow-hidden relative">
       <motion.div
-        className="flex gap-16"
-        initial={{ x: "0%" }}
-        animate={{ x: "-50%" }}
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        className="flex gap-16 w-max"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{ repeat: Infinity, duration: 80, ease: "linear" }} // slowed down
       >
-        {[...techStack, ...techStack].map((tech, index) => (
-          <motion.div
+        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+          <div
             key={index}
             className="group relative flex flex-col items-center cursor-pointer"
-            whileHover={{ scale: 1.2 }}
-            transition={{ duration: 0.3 }}
           >
             {/* Icon */}
             <div
-              className="text-6xl text-gray-400 transition-colors duration-500 group-hover:text-current"
+              className="text-6xl transition-transform duration-300 group-hover:scale-125"
               style={{ color: tech.color }}
             >
               {tech.icon}
             </div>
-          </motion.div>
+
+            {/* Tooltip with label */}
+            <span className="absolute -bottom-8 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {tech.label}
+            </span>
+          </div>
         ))}
       </motion.div>
     </section>
