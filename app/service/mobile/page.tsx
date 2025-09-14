@@ -40,7 +40,10 @@ import {
   SiNodedotjs,
   SiGraphql,
   SiMongodb,
-  // SiJava,         // <-- delete this
+  SiTypescript,
+  SiRedux,
+  SiTailwindcss,
+  SiXcode
 } from "react-icons/si";
 
 const fadeUp: Variants = {
@@ -184,41 +187,51 @@ export default function MobileAppDevelopmentPage() {
 
       {/* TECH STACK */}
       <section className="py-20 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Tech Stack</h2>
-          <p className="mt-3 text-gray-600">We use cutting-edge tools to deliver high-performance mobile apps.</p>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Tech Stack</h2>
+    <p className="mt-3 text-gray-600">
+      We use cutting-edge tools to deliver high-performance mobile apps.
+    </p>
 
-          <div className="mt-12 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-5 sm:gap-6 md:gap-8">
-            {[
-              { Icon: FaApple, label: "iOS" },
-              { Icon: FaAndroid, label: "Android" },
-              { Icon: FaReact, label: "React Native" },
-              { Icon: SiFlutter, label: "Flutter" },
-              { Icon: SiSwift, label: "Swift" },
-              { Icon: SiKotlin, label: "Kotlin" },
-              { Icon: SiFirebase, label: "Firebase" },
-              { Icon: SiExpo, label: "Expo" },
-              { Icon: FaJava, label: "Java" },
-              { Icon: SiNodedotjs, label: "Node.js" },
-              { Icon: SiGraphql, label: "GraphQL" },
-              { Icon: SiMongodb, label: "MongoDB" },
-            ].map((tech, i) => (
-              <motion.div
-                key={tech.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.12 }}
-                className="flex flex-col items-center p-4 sm:p-5 rounded-lg bg-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition cursor-pointer"
-              >
-                <tech.Icon className="h-8 w-8 sm:h-10 sm:w-10" />
-                <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-900">{tech.label}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="mt-12 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-5 sm:gap-6 md:gap-8">
+      {[
+  { Icon: FaApple, label: "iOS", color: "#000000" },
+  { Icon: FaAndroid, label: "Android", color: "#3DDC84" },
+  { Icon: FaReact, label: "React Native", color: "#61DAFB" },   // React Cyan
+  { Icon: SiFlutter, label: "Flutter", color: "#02569B" },      // Flutter Blue
+  { Icon: SiSwift, label: "Swift", color: "#FA7343" },          // Swift Orange
+  { Icon: SiKotlin, label: "Kotlin", color: "#7F52FF" },        // Kotlin Purple
+  { Icon: SiFirebase, label: "Firebase", color: "#FFCA28" },
+  { Icon: SiExpo, label: "Expo", color: "#000000" },
+  { Icon: FaJava, label: "Java", color: "#E76F00" },
+  { Icon: SiNodedotjs, label: "Node.js", color: "#339933" },
+  { Icon: SiGraphql, label: "GraphQL", color: "#E10098" },
+  { Icon: SiMongodb, label: "MongoDB", color: "#47A248" },
+  { Icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
+  { Icon: SiRedux, label: "Redux", color: "#764ABC" },
+  { Icon: SiTailwindcss, label: "Tailwind CSS", color: "#06B6D4" },
+  { Icon: SiXcode, label: "Xcode", color: "#147EFB" }
+].map((tech, i) => (
+  <motion.div
+    key={tech.label}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4, delay: i * 0.05 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.12 }}
+    className="flex flex-col items-center p-4 sm:p-5 rounded-lg bg-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition cursor-pointer"
+  >
+    {/* Use inline style for brand colors */}
+    <tech.Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: tech.color }} />
+    <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-900">
+      {tech.label}
+    </span>
+  </motion.div>
+))}
+    </div>
+  </div>
+</section>
+
 
       {/* EXTRA FEATURES */}
       <section className="py-20 md:py-24 bg-gray-50">
@@ -259,47 +272,47 @@ export default function MobileAppDevelopmentPage() {
         </div>
       </section>
 
-     {/* PROCESS */}
-<section className="py-20 md:py-24 bg-white">
-  <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Development Process</h2>
-    <p className="mt-3 text-gray-600">
-      A transparent, structured workflow ensuring quality and timely delivery.
-    </p>
+      {/* PROCESS */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Development Process</h2>
+          <p className="mt-3 text-gray-600">
+            A transparent, structured workflow ensuring quality and timely delivery.
+          </p>
 
-    <div className="mt-12 md:mt-16 relative">
-      <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-200" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 sm:gap-8 relative z-10">
-        {[
-          { Icon: FaSearch, title: "Discovery" },
-          { Icon: FaRulerCombined, title: "Design" },
-          { Icon: FaCode, title: "Development" },
-          { Icon: FaFlask, title: "Testing" },
-          { Icon: FaUpload, title: "Deployment" },
-          { Icon: FaHeadset, title: "Support" },
-        ].map((step, i) => (
-          <motion.div
-            key={step.title}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={i}
-            whileHover={{ scale: 1.04 }}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
-              <step.Icon className="h-6 w-6 sm:h-7 sm:w-7" />
+          <div className="mt-12 md:mt-16 relative">
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-200" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 sm:gap-8 relative z-10">
+              {[
+                { Icon: FaSearch, title: "Discovery" },
+                { Icon: FaRulerCombined, title: "Design" },
+                { Icon: FaCode, title: "Development" },
+                { Icon: FaFlask, title: "Testing" },
+                { Icon: FaUpload, title: "Deployment" },
+                { Icon: FaHeadset, title: "Support" },
+              ].map((step, i) => (
+                <motion.div
+                  key={step.title}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  custom={i}
+                  whileHover={{ scale: 1.04 }}
+                  className="flex flex-col items-center text-center"
+                >
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
+                    <step.Icon className="h-6 w-6 sm:h-7 sm:w-7" />
+                  </div>
+                  <h3 className="mt-3 sm:mt-4 text-sm sm:text-base font-semibold text-gray-900">
+                    {step.title}
+                  </h3>
+                </motion.div>
+              ))}
             </div>
-            <h3 className="mt-3 sm:mt-4 text-sm sm:text-base font-semibold text-gray-900">
-              {step.title}
-            </h3>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
 
       {/* CASE STUDIES */}
