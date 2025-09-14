@@ -104,7 +104,7 @@ export default function MobileAppDevelopmentPage() {
               viewport={{ once: true }}
             >
               {/* Phone 1 */}
-              <motion.div
+              {/* <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: [0, -15, 0], opacity: 1 }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -119,10 +119,10 @@ export default function MobileAppDevelopmentPage() {
                   sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 256px"
                   priority
                 />
-              </motion.div>
+              </motion.div> */}
 
               {/* Phone 2 */}
-              <motion.div
+              {/* <motion.div
                 initial={{ y: -30, opacity: 0 }}
                 animate={{ y: [0, 20, 0], opacity: 1 }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -136,7 +136,7 @@ export default function MobileAppDevelopmentPage() {
                   className="w-40 sm:w-52 md:w-64 h-auto"
                   sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 256px"
                 />
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </div>
         </div>
