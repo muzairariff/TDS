@@ -21,6 +21,7 @@ import {
   FaMedal,
   FaCheckCircle,
   FaQuoteLeft,
+  FaCogs
 } from "react-icons/fa";
 
 // ✅ Type-safe reusable fade-up animation
@@ -127,10 +128,11 @@ export default function OperationsPage() {
   ];
 
   const capabilities = [
-    { icon: FaRegClock, title: "24/7 Monitoring", desc: "NOC/SOC coverage with real-time alerts & dashboards." },
-    { icon: FaMedal, title: "SLA Governance", desc: "Aggressive SLAs with transparent performance reviews." },
-    { icon: FaCheckCircle, title: "Quality Audits", desc: "Monthly audits, checklists, and improvement playbooks." },
-  ];
+  { icon: FaRegClock, title: "24/7 Monitoring", desc: "NOC/SOC coverage with real-time alerts & dashboards." },
+  { icon: FaMedal, title: "SLA Governance", desc: "Aggressive SLAs with transparent performance reviews." },
+  { icon: FaCheckCircle, title: "Quality Audits", desc: "Monthly audits, checklists, and improvement playbooks." },
+  { icon: FaCogs, title: "Process Automation", desc: "Streamlined workflows with automated escalation & reporting." },
+];
 
   const leaders = [
     { name: "Ayesha Khan", role: "Head of Operations", initials: "AK" },

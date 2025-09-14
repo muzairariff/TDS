@@ -14,7 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const onHome = pathname === "/";
 
-  // ——— Scroll handling: works for window & scroll containers ———
+  // ——— Scroll handling ———
   useEffect(() => {
     const el = (document.scrollingElement || document.documentElement) as HTMLElement;
 
@@ -25,7 +25,7 @@ export default function Navbar() {
 
     const onScroll = () => setScrolled(readTop() > 8);
 
-    onScroll(); // set once on mount/route change
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -82,18 +82,13 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
-  // Solid when scrolled OR not on home
   const solid = scrolled || !onHome;
-
-  // Background + border
   const navBg = !solid
     ? "bg-transparent"
-    : onHome
-    ? "bg-white/90 supports-[backdrop-filter]:bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm"
     : "bg-white border-b border-gray-200 shadow-sm";
 
   const linkBase =
-    "relative px-3 py-2 text-sm font-medium rounded-xl transition focus:outline-none focus-visible:ring-2";
+    "relative px-3 py-2 text-sm md:text-base font-medium rounded-xl transition focus:outline-none focus-visible:ring-2";
   const linkColors = solid
     ? "text-gray-800 hover:text-primary focus-visible:ring-primary"
     : "text-white hover:text-white/85 focus-visible:ring-white/70";
@@ -110,15 +105,15 @@ export default function Navbar() {
             <Image
               src="/assets/images/logo.png"
               alt="Company Logo"
-              width={160}
-              height={160}
+              width={140}
+              height={60}
               priority
               className={solid ? "" : "drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]"}
             />
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => {
               if (item.type === "link") {
                 return (
@@ -135,12 +130,7 @@ export default function Navbar() {
               }
               const open = openMenu === item.id;
               return (
-                <div
-                  key={item.id}
-                  className="relative"
-                  onMouseEnter={() => setOpenMenu(item.id)}
-                  onMouseLeave={() => setOpenMenu(null)}
-                >
+                <div key={item.id} className="relative">
                   <button
                     onClick={() => setOpenMenu(open ? null : item.id)}
                     aria-haspopup="menu"
@@ -163,7 +153,9 @@ export default function Navbar() {
 
                   <div
                     className={`absolute top-full left-0 z-50 mt-2 w-56 rounded-xl border border-gray-200 bg-white shadow-xl transition ${
-                      open ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-1"
+                      open
+                        ? "pointer-events-auto opacity-100 translate-y-0"
+                        : "pointer-events-none opacity-0 -translate-y-1"
                     }`}
                     role="menu"
                   >
@@ -172,7 +164,7 @@ export default function Navbar() {
                         <Link
                           key={i.label}
                           href={i.href}
-                          className="rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-primary/5"
+                          className="rounded-lg px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-primary/5"
                           onClick={() => setOpenMenu(null)}
                         >
                           {i.label}
@@ -186,13 +178,13 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className="ml-1 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent"
+              className="ml-2 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2 text-sm md:text-base font-semibold text-white transition hover:bg-accent"
             >
               Get a Quote
             </Link>
           </div>
 
-          {/* Mobile button (3 bars) */}
+          {/* Mobile button */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileOpen(true)}
@@ -209,20 +201,22 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* ✅ Mobile Drawer */}
       <div className={`fixed inset-0 z-40 lg:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
+        {/* Overlay */}
         <div
           onClick={() => setMobileOpen(false)}
           className={`absolute inset-0 bg-black/40 transition-opacity ${mobileOpen ? "opacity-100" : "opacity-0"}`}
         />
+        {/* Drawer */}
         <aside
           className={`fixed right-0 top-0 h-full w-[85%] max-w-xs transform bg-white p-6 shadow-2xl transition-transform ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-              <Image src="/assets/images/logo.png" alt="Company Logo" width={160} height={40} priority />
+            <Link href="/" onClick={() => setMobileOpen(false)}>
+              <Image src="/assets/images/logo.png" alt="Company Logo" width={140} height={40} priority />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
@@ -235,6 +229,7 @@ export default function Navbar() {
             </button>
           </div>
 
+          {/* Mobile Nav */}
           <nav className="mt-6 space-y-2">
             {navItems.map((item) => {
               if (item.type === "link") {
@@ -242,9 +237,7 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-primary/5 ${
-                      isActive(item.href) ? "bg-primary/5" : ""
-                    }`}
+                    className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-primary/5"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}

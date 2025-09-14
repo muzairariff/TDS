@@ -57,16 +57,14 @@ export default function UIDesignPage() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="order-2 relative rounded-xl overflow-hidden mx-auto w-full max-w-2xl
-                   h-[260px] sm:h-[340px] md:h-[440px] lg:h-[500px]"
-      >
+        className="order-2 relative rounded-xl overflow-hidden mx-auto w-full max-w-2xl h-[260px] sm:h-[340px] md:h-[440px] lg:h-[500px]">
         {/* If you already use next/image on this page, you can swap <img> with <Image> */}
         <img
-          src="/assets/images/uiux-hero.png"
+          src="/assets/images/UIUX.jpg"
           alt="UI/UX Design"
-          className="w-full h-full object-cover rounded-xl shadow-lg"
+          className=" h-full object-cover rounded-xl shadow-lg"
           loading="eager"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw"
+          sizes="(max-width: 200px) 100vw, (max-width: 1024px) 80vw, 50vw"
         />
       </motion.div>
     </div>

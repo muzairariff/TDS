@@ -34,7 +34,7 @@ export default function AboutUsPage() {
     <main className="bg-white text-gray-900">
       <Navbar />
 
-    {/* HERO */}
+{/* HERO */}
 <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50">
   {/* floating gradient blobs */}
   <motion.div
@@ -48,8 +48,8 @@ export default function AboutUsPage() {
     className="pointer-events-none absolute bottom-10 right-4 w-52 h-52 sm:w-72 sm:h-72 bg-cyan-200 rounded-full blur-3xl opacity-30 -z-10"
   />
 
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       {/* TEXT */}
       <motion.div
         initial="hidden"
@@ -58,27 +58,28 @@ export default function AboutUsPage() {
         variants={fadeUp}
         className="text-center lg:text-left"
       >
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mt-5">
-          About <span className="text-primary">TechDirectSupport</span>
-        </h1>
+        <h1 className="text-[60px] font-extrabold leading-[1.2] tracking-tight text-gray-900 mt-5 ">
+  About <span className="text-primary">TechDirectSupport</span>
+</h1>
 
-        <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+        <p className="mt-8 text-xl sm:text-2xl lg:text-3xl text-gray-700 leading-relaxed max-w-3xl mx-auto lg:mx-0">
           We are a passionate team of{" "}
-          <span className="font-semibold">developers, designers, and innovators</span>, 
-          crafting world-class digital solutions. From apps to enterprise-grade platforms, 
-          we empower businesses to grow with technology.
+          <span className="font-bold text-gray-900">developers, designers, and innovators</span>, 
+          crafting <span className="text-primary font-bold">world-class digital solutions</span>.  
+          From modern apps to enterprise-grade platforms, we empower businesses 
+          to <span className="font-bold text-accent">grow with technology</span>.
         </p>
 
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
           <Link
             href="/contact"
-            className="rounded-full bg-primary px-6 py-3 text-sm sm:text-base font-semibold text-white shadow hover:bg-accent transition"
+            className="rounded-full bg-primary px-10 py-5 text-lg sm:text-xl font-semibold text-white shadow-xl hover:bg-accent transition"
           >
             Let’s Work Together
           </Link>
           <Link
             href="/portfolio"
-            className="rounded-full border border-primary px-6 py-3 text-sm sm:text-base font-semibold text-primary hover:bg-primary/10 transition"
+            className="rounded-full border-2 border-primary px-10 py-5 text-lg sm:text-xl font-semibold text-primary hover:bg-primary/10 transition"
           >
             Our Work
           </Link>
@@ -91,7 +92,7 @@ export default function AboutUsPage() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] rounded-2xl shadow-xl overflow-hidden"
+        className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] rounded-3xl shadow-2xl overflow-hidden"
       >
         <Image
           src="/assets/images/hero-about.png"
@@ -104,6 +105,7 @@ export default function AboutUsPage() {
     </div>
   </div>
 </section>
+
 
 
      {/* QUICK STATS */}
