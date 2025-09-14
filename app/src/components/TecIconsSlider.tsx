@@ -32,30 +32,38 @@ const techStack = [
 export default function TechIconsSlider() {
   return (
     <section className="py-12 overflow-hidden relative">
+      {/* Outer draggable container */}
       <motion.div
-        className="flex gap-16 w-max"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 80, ease: "linear" }} // slowed down
+        drag="x"
+        dragConstraints={{ left: -2000, right: 0 }}
+        className="cursor-grab active:cursor-grabbing"
       >
-        {[...techStack, ...techStack, ...techStack].map((tech, index) => (
-          <div
-            key={index}
-            className="group relative flex flex-col items-center cursor-pointer"
-          >
-            {/* Icon */}
+        {/* Inner auto-sliding row */}
+        <motion.div
+          className="flex gap-16 w-max"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
+        >
+          {[...techStack, ...techStack, ...techStack].map((tech, index) => (
             <div
-              className="text-6xl transition-transform duration-300 group-hover:scale-125"
-              style={{ color: tech.color }}
+              key={index}
+              className="group relative flex flex-col items-center cursor-pointer"
             >
-              {tech.icon}
-            </div>
+              {/* Icon */}
+              <div
+                className="text-6xl transition-transform duration-300 group-hover:scale-125"
+                style={{ color: tech.color }}
+              >
+                {tech.icon}
+              </div>
 
-            {/* Tooltip with label */}
-            <span className="absolute -bottom-8 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {tech.label}
-            </span>
-          </div>
-        ))}
+              {/* Tooltip */}
+              <span className="absolute -bottom-8 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {tech.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
     </section>
   );

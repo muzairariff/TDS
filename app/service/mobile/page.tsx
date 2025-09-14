@@ -98,50 +98,23 @@ export default function MobileAppDevelopmentPage() {
             </div>
           </motion.div>
 
-          {/* Right Animated Phones */}
-          <div className="relative order-1 lg:order-2 min-h-[260px] sm:min-h-[320px] md:min-h-[360px] lg:min-h-[420px]">
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              {/* Phone 1 */}
-              {/* <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: [0, -15, 0], opacity: 1 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute rotate-6 drop-shadow-2xl"
-              >
-                <Image
-                  src="/assets/images/iphone-mockup1.png"
-                  alt="iPhone mockup 1"
-                  width={320}
-                  height={640}
-                  className="w-40 sm:w-52 md:w-64 h-auto"
-                  sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 256px"
-                  priority
-                />
-              </motion.div> */}
+      {/* Right Phone Mockup */}
+<div className="relative order-1 lg:order-2 flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[650px] lg:min-h-[750px]">
+  <div className="relative drop-shadow-2xl rotate-6">
+    <Image
+      src="/assets/images/mobile-hero-5.jpg"
+      alt="Phone mockup"
+      width={500}
+      height={1000}
+      className="w-[18rem] sm:w-[22rem] md:w-[26rem] lg:w-[30rem] h-auto rounded-2xl"
+      sizes="(max-width: 640px) 288px, (max-width: 768px) 352px, (max-width: 1024px) 416px, 480px"
+      priority
+    />
+  </div>
+</div>
 
-              {/* Phone 2 */}
-              {/* <motion.div
-                initial={{ y: -30, opacity: 0 }}
-                animate={{ y: [0, 20, 0], opacity: 1 }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -rotate-6 drop-shadow-2xl"
-              >
-                <Image
-                  src="/assets/images/iphone-mockup2.png"
-                  alt="iPhone mockup 2"
-                  width={320}
-                  height={640}
-                  className="w-40 sm:w-52 md:w-64 h-auto"
-                  sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 256px"
-                />
-              </motion.div> */}
-            </motion.div>
-          </div>
+
+
         </div>
       </section>
 
@@ -187,50 +160,50 @@ export default function MobileAppDevelopmentPage() {
 
       {/* TECH STACK */}
       <section className="py-20 md:py-24 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Tech Stack</h2>
-    <p className="mt-3 text-gray-600">
-      We use cutting-edge tools to deliver high-performance mobile apps.
-    </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Tech Stack</h2>
+          <p className="mt-3 text-gray-600">
+            We use cutting-edge tools to deliver high-performance mobile apps.
+          </p>
 
-    <div className="mt-12 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-5 sm:gap-6 md:gap-8">
-      {[
-  { Icon: FaApple, label: "iOS", color: "#000000" },
-  { Icon: FaAndroid, label: "Android", color: "#3DDC84" },
-  { Icon: FaReact, label: "React Native", color: "#61DAFB" },   // React Cyan
-  { Icon: SiFlutter, label: "Flutter", color: "#02569B" },      // Flutter Blue
-  { Icon: SiSwift, label: "Swift", color: "#FA7343" },          // Swift Orange
-  { Icon: SiKotlin, label: "Kotlin", color: "#7F52FF" },        // Kotlin Purple
-  { Icon: SiFirebase, label: "Firebase", color: "#FFCA28" },
-  { Icon: SiExpo, label: "Expo", color: "#000000" },
-  { Icon: FaJava, label: "Java", color: "#E76F00" },
-  { Icon: SiNodedotjs, label: "Node.js", color: "#339933" },
-  { Icon: SiGraphql, label: "GraphQL", color: "#E10098" },
-  { Icon: SiMongodb, label: "MongoDB", color: "#47A248" },
-  { Icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
-  { Icon: SiRedux, label: "Redux", color: "#764ABC" },
-  { Icon: SiTailwindcss, label: "Tailwind CSS", color: "#06B6D4" },
-  { Icon: SiXcode, label: "Xcode", color: "#147EFB" }
-].map((tech, i) => (
-  <motion.div
-    key={tech.label}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.4, delay: i * 0.05 }}
-    viewport={{ once: true }}
-    whileHover={{ scale: 1.12 }}
-    className="flex flex-col items-center p-4 sm:p-5 rounded-lg bg-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition cursor-pointer"
-  >
-    {/* Use inline style for brand colors */}
-    <tech.Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: tech.color }} />
-    <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-900">
-      {tech.label}
-    </span>
-  </motion.div>
-))}
-    </div>
-  </div>
-</section>
+          <div className="mt-12 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-5 sm:gap-6 md:gap-8">
+            {[
+              { Icon: FaApple, label: "iOS", color: "#000000" },
+              { Icon: FaAndroid, label: "Android", color: "#3DDC84" },
+              { Icon: FaReact, label: "React Native", color: "#61DAFB" },   // React Cyan
+              { Icon: SiFlutter, label: "Flutter", color: "#02569B" },      // Flutter Blue
+              { Icon: SiSwift, label: "Swift", color: "#FA7343" },          // Swift Orange
+              { Icon: SiKotlin, label: "Kotlin", color: "#7F52FF" },        // Kotlin Purple
+              { Icon: SiFirebase, label: "Firebase", color: "#FFCA28" },
+              { Icon: SiExpo, label: "Expo", color: "#000000" },
+              { Icon: FaJava, label: "Java", color: "#E76F00" },
+              { Icon: SiNodedotjs, label: "Node.js", color: "#339933" },
+              { Icon: SiGraphql, label: "GraphQL", color: "#E10098" },
+              { Icon: SiMongodb, label: "MongoDB", color: "#47A248" },
+              { Icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
+              { Icon: SiRedux, label: "Redux", color: "#764ABC" },
+              { Icon: SiTailwindcss, label: "Tailwind CSS", color: "#06B6D4" },
+              { Icon: SiXcode, label: "Xcode", color: "#147EFB" }
+            ].map((tech, i) => (
+              <motion.div
+                key={tech.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.12 }}
+                className="flex flex-col items-center p-4 sm:p-5 rounded-lg bg-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition cursor-pointer"
+              >
+                {/* Use inline style for brand colors */}
+                <tech.Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: tech.color }} />
+                <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-900">
+                  {tech.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
 
       {/* EXTRA FEATURES */}

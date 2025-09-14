@@ -43,53 +43,47 @@ export default function WebDevelopmentPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-90" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-28 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-              Building <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                Next-Gen
-              </span>{" "}
-              Web Solutions
-            </h1>
-            <p className="mt-6 text-gray-300 text-lg max-w-xl leading-relaxed">
-              We design and develop scalable, secure, and lightning-fast web
-              applications that empower startups and enterprises to grow faster.
-            </p>
-            <div className="mt-8 flex gap-4">
-              <Link
-                href="/contact"
-                className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 font-semibold transition shadow-lg hover:shadow-blue-500/40"
-              >
-                Get a Proposal
-              </Link>
-              <Link
-                href="/portfolio"
-                className="px-6 py-3 rounded-full border border-gray-400 hover:border-blue-400 font-semibold transition"
-              >
-                View Portfolio
-              </Link>
-            </div>
-          </motion.div>
+    <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-28 grid lg:grid-cols-2 gap-12 items-center">
+  {/* Text Content */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white-100">
+      Building Next-Gen Web Solutions
+    </h1>
+    <p className="mt-6 text-white-600 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed">
+      We design and develop scalable, secure, and lightning-fast web
+      applications that help startups and enterprises grow faster.
+    </p>
+    <div className="mt-8 flex gap-4">
+      <Link
+        href="/contact"
+        className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 font-semibold text-white transition shadow-lg hover:shadow-blue-500/40"
+      >
+        Get a Proposal
+      </Link>
+     
+    </div>
+  </motion.div>
 
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative h-[420px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
-          >
-            <img
-              src="/assets/images/web-hero-illustration.png"
-              alt="Hero Illustration"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </div>
+  {/* Hero Image */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1 }}
+    className="relative h-[420px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+  >
+    <img
+      src="/assets/images/web.jpg"
+      alt="Hero Illustration"
+      className="w-full h-full object-cover"
+    />
+  </motion.div>
+</div>
+
+
       </section>
 
 
@@ -137,39 +131,91 @@ export default function WebDevelopmentPage() {
       <Process />
       <TechStackSection />
 
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Case Studies</h2>
-          <p className="mt-3 text-gray-600">See how we’ve helped businesses transform digitally.</p>
+<section className="py-24 bg-gray-50 relative overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+      Case Studies
+    </h2>
+    <p className="mt-3 text-gray-600">
+      See how we’ve helped businesses transform digitally.
+    </p>
 
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="relative group rounded-2xl overflow-hidden shadow-lg"
+    <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {[1, 2, 3].map((i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.03 }}
+          className="relative group rounded-2xl overflow-hidden shadow-xl"
+        >
+          {/* Image */}
+          <img
+            src={`/assets/images/project-web-${i}.jpg`}
+            alt={`Project ${i}`}
+            className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          />
+
+          {/* Overlay with your color */}
+          <div
+            className="absolute inset-0 transition-colors duration-500"
+            style={{ backgroundColor: "#12182066" }}
+          ></div>
+
+          {/* Button */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            {i === 1 ? (
+              <a
+                href="https://lancsenergygrants.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-md hover:bg-primary hover:text-white transition-all duration-300"
               >
-                <img
-                  src={`/assets/images/project-${i}.jpg`}
-                  alt={`Project ${i}`}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                  <Link href="/case-studies" className="px-5 py-2 bg-white text-primary rounded-full font-medium shadow">
-                    View Project
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                View Project
+              </a>
+            ) : i === 2 ? (
+              <a
+                href="https://fulfillable.co.uk/?gad_source=1&gclid=CjwKCAiAjfyqBhAsEiwA-UdzJKLFj8CR4XM_LS9p0WjnRUqQPyejc22aO6Az-xw40Qj7G97u2wYJXRoCXewQAvD_BwE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-md hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                View Project
+              </a>
+            ) : i === 3 ? (
+              <a
+                href="https://travelagency.pos247.shop/Account/Login?ReturnUrl=%2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-md hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                View Project
+              </a>
+            ) : (
+              <Link
+                href="/case-studies"
+                className="px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-md hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                View Project
+              </Link>
+            )}
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
       {/* FINAL CTA */}
-      <section className="relative bg-gradient-to-r from-primary via-blue-600 to-cyan-500 text-white py-20 overflow-hidden">
+      <section className="relative bg-blue-600 text-white py-20 overflow-hidden">
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
@@ -185,12 +231,10 @@ export default function WebDevelopmentPage() {
           <h2 className="text-4xl font-extrabold">Let’s Build the Future Together</h2>
           <p className="mt-4 text-lg text-blue-100">We don’t just code, we craft solutions that empower businesses.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-primary hover:bg-gray-100 transition">
+            <Link href="/contact" className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-black hover:bg-gray-100 transition">
               Contact Us
             </Link>
-            <Link href="/portfolio" className="rounded-full border-2 border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
-              View Portfolio
-            </Link>
+           
           </div>
         </div>
       </section>

@@ -3,11 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Syne } from "next/font/google";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-const syne = Syne({ subsets: ["latin"], weight: ["400", "600", "700", "800"] });
 
 const bgImages = [
   "/assets/images/hero/slide-1.jpg",
@@ -15,8 +12,11 @@ const bgImages = [
   "/assets/images/hero/slide-3.jpg",
 ];
 
+
+
 export default function HeroSplitCarousel() {
   const [index, setIndex] = useState(0);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => setIndex((p) => (p + 1) % bgImages.length), 5000);
@@ -24,9 +24,7 @@ export default function HeroSplitCarousel() {
   }, []);
 
   return (
-    <section
-      className={`${syne.className} relative text-white overflow-hidden min-h-screen flex items-center`}
-    >
+    <section className="relative text-white overflow-hidden min-h-screen flex items-center">
       {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[#121820]" />
@@ -49,10 +47,7 @@ export default function HeroSplitCarousel() {
             />
           </motion.div>
         </AnimatePresence>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ backgroundColor: "#121820cc" }}
-        />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: "#121820cc" }} />
       </div>
 
       {/* CONTENT */}
@@ -60,22 +55,31 @@ export default function HeroSplitCarousel() {
         {/* LEFT */}
         <div className="flex justify-start">
           <div className="w-full max-w-xl md:max-w-2xl bg-black/40 rounded-2xl p-5 sm:p-8 md:p-10 space-y-6 backdrop-blur-sm text-left">
-          <h1 className="font-extrabold tracking-tight leading-snug text-[clamp(3rem,8vw,6.5rem)]">
-  Empowering Businesses <br />
-  with <span className="text-cyan-300">Smart IT Solutions</span>
-</h1>
+            <h1
+              className="font-[var(--font-montserrat)] font-extrabold tracking-tight leading-[1.05] 
+              text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-5xl"
+            >
+              Driving Businesses <br />
+              Forward with{" "}
+              <span className="font-[var(--font-pacifico)] text-cyan-300 block mt-4">
+                IT Solutions
+              </span>
+            </h1>
 
-            <p className="text-gray-100/90 text-base sm:text-lg md:text-xl leading-relaxed">
-              We design and develop high-performance digital products that
-              accelerate growth, strengthen brands, and empower businesses
-              worldwide.
+            <p className="text-gray-100/90 font-[var(--font-inter)] text-base sm:text-lg md:text-xl leading-relaxed">
+              From concept to launch, we design and build technology that drives real results for businesses worldwide.
             </p>
-           <Link href="/contact">
-  <button className="flex items-center mt-5 gap-2 px-5 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-cyan-300 text-white font-medium text-sm sm:text-base md:text-lg hover:bg-cyan-300/20 transition w-fit">
-    Let’s Build Together
-    <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-  </button>
-</Link>
+            <Link href="/contact">
+              <button
+                className="group flex items-center mt-5 gap-2 px-5 sm:px-8 py-3 sm:py-4
+                rounded-full border-2 border-cyan-300 text-[#fff] font-medium
+                text-sm sm:text-base md:text-lg transition-colors duration-200
+                hover:!bg-[#36e0f7] hover:!text-white"
+              >
+                Let’s Build Together
+                <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -101,6 +105,8 @@ export default function HeroSplitCarousel() {
               <div className="absolute inset-0 bg-black/20" />
             </motion.div>
           </AnimatePresence>
+
+          
         </div>
       </div>
     </section>

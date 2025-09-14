@@ -35,8 +35,8 @@ const services: Service[] = [
     delay: 0.1,
   },
   {
-    title: "Talent Partnerships",
-    desc: "Engage top industry talent to refine your technology strategy and drive innovation.",
+    title: "Operational Support",
+    desc: "Providing end-to-end operational support to keep your business running seamlessly and efficiently.",
     href: "/service-details",
     Icon: BsPeopleFill,
     delay: 0.15,
@@ -91,7 +91,8 @@ export default function ServicesSection() {
             </span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-gray-600">
-            Trusted by enterprises to build secure, scalable, and innovative digital ecosystems.
+            Trusted by enterprises to build secure, scalable, and innovative
+            digital ecosystems.
           </p>
         </motion.div>
 
@@ -112,7 +113,9 @@ export default function ServicesSection() {
               </div>
 
               <div className="relative flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+                  {title}
+                </h3>
                 <p className="mt-3 text-gray-600 leading-relaxed">{desc}</p>
 
                 <div className="mt-auto pt-6">
