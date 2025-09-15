@@ -28,14 +28,7 @@ export default function Navbar() {
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    document.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
   // Close menus on outside click & Esc
@@ -84,11 +77,12 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
-  // ✅ Fixed: replaced onHome → isHome
-  const solid = scrolled || !isHome;
-  const navBg = !solid
-    ? "bg-transparent"
-    : "bg-white border-b border-gray-200 shadow-sm";
+  // ✅ Fix: Transparent on home until scroll, always solid on inner pages
+  const solid = isHome ? scrolled : true;
+
+  const navBg = solid
+    ? "bg-white border-b border-gray-200 shadow-sm"
+    : "bg-transparent";
 
   const linkBase =
     "relative px-3 py-2 text-sm md:text-base font-medium rounded-xl transition focus:outline-none focus-visible:ring-2";
@@ -99,7 +93,7 @@ export default function Navbar() {
   return (
     <div
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navBg}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${navBg}`}
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -193,14 +187,13 @@ export default function Navbar() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               className={`inline-flex h-10 w-10 items-center justify-center rounded-xl transition 
-                ${isHome ? "text-white hover:bg-white/20" : "text-black hover:bg-gray-200"}`}
+                ${isHome && !scrolled ? "text-white hover:bg-white/20" : "text-black hover:bg-gray-200"}`}
             >
               <svg
                 viewBox="0 0 24 24"
                 width="22"
                 height="22"
                 aria-hidden="true"
-                className={isHome ? "text-white" : "text-black"}
               >
                 <path
                   d="M3 6h18M3 12h18M3 18h18"
