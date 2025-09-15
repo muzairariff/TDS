@@ -11,8 +11,9 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileCollapsibles, setMobileCollapsibles] = useState<Record<string, boolean>>({});
   const navRef = useRef<HTMLDivElement>(null);
+
   const pathname = usePathname();
-  const onHome = pathname === "/";
+  const isHome = pathname === "/";
 
   // ——— Scroll handling ———
   useEffect(() => {
@@ -52,6 +53,7 @@ export default function Navbar() {
     };
   }, []);
 
+  // Nav items
   const navItems: Array<
     | { type: "link"; label: string; href: string }
     | { type: "menu"; id: string; label: string; items: { label: string; href: string }[] }
@@ -82,7 +84,8 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
-  const solid = scrolled || !onHome;
+  // ✅ Fixed: replaced onHome → isHome
+  const solid = scrolled || !isHome;
   const navBg = !solid
     ? "bg-transparent"
     : "bg-white border-b border-gray-200 shadow-sm";
@@ -189,19 +192,29 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${
-                solid ? "text-gray-700 hover:bg-gray-100" : "text-white/90 hover:bg-white/10"
-              }`}
+              className={`inline-flex h-10 w-10 items-center justify-center rounded-xl transition 
+                ${isHome ? "text-white hover:bg-white/20" : "text-black hover:bg-gray-200"}`}
             >
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                className={isHome ? "text-white" : "text-black"}
+              >
+                <path
+                  d="M3 6h18M3 12h18M3 18h18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           </div>
         </div>
       </nav>
 
-      {/* ✅ Mobile Drawer */}
+      {/* Mobile Drawer */}
       <div className={`fixed inset-0 z-40 lg:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
         {/* Overlay */}
         <div

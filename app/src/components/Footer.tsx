@@ -98,8 +98,8 @@ export default function Footer() {
           </h3>
           <div className="flex justify-center sm:justify-start space-x-4 mb-6">
             {[
-              { Icon: FaFacebookF, color: "text-blue-600", bg: "bg-blue-100", href: "https://facebook.com" },
-              { Icon: FaInstagram, color: "text-pink-600", bg: "bg-pink-100", href: "https://instagram.com" },
+              { Icon: FaFacebookF, color: "text-blue-600", bg: "bg-blue-100", href: "https://www.facebook.com/techdirectsupport" },
+              { Icon: FaInstagram, color: "text-pink-600", bg: "bg-pink-100", href: "https://www.instagram.com/techdirectsupport/" },
               { Icon: FaLinkedinIn, color: "text-blue-600", bg: "bg-blue-100", href: "https://linkedin.com" },
               { Icon: FaTwitter, color: "text-sky-600", bg: "bg-sky-100", href: "https://twitter.com" },
             ].map(({ Icon, color, bg, href }, idx) => (
@@ -126,7 +126,7 @@ export default function Footer() {
       {/* Divider + Bottom Bar */}
       <div className="border-t border-gray-200 py-4 sm:py-6 text-center text-xs sm:text-sm text-gray-500 relative z-10">
         © {new Date().getFullYear()}{" "}
-        <span className="font-semibold text-gray-800">TDS</span>. All rights reserved.
+        <span className="font-semibold text-gray-800"> Tech Direct Support.</span>. All rights reserved.
       </div>
     </footer>
   );

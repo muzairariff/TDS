@@ -4,10 +4,32 @@ import { useState } from "react";
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import { Mail, Phone, User, MessageSquare, MapPin, Clock } from "lucide-react";
+import { usePathname } from "next/navigation";
 
+// ✅ Named export instead of default
+export function MobileMenuButton({
+  setMobileOpen,
+}: {
+  setMobileOpen: (open: boolean) => void;
+}) {
+  const pathname = usePathname();
+  const isHome = pathname === "/"; // true if on home page
+
+  return (
+    <button
+      onClick={() => setMobileOpen(true)}
+      className={`p-2 ${isHome ? "text-white" : "text-gray-900"}`}
+    >
+      Menu
+    </button>
+  );
+}
+
+// ✅ Only one default export
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<null | { type: "success" | "error"; message: string }>(null);
+  const [status, setStatus] =
+    useState<null | { type: "success" | "error"; message: string }>(null);
 
   async function submitContact(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -16,8 +38,8 @@ export default function ContactPage() {
     setStatus(null);
 
     const form = e.currentTarget;
-    // Honeypot (simple spam trap)
-    const company = (form.elements.namedItem("company") as HTMLInputElement)?.value;
+    const company = (form.elements.namedItem("company") as HTMLInputElement)
+      ?.value;
     if (company) {
       setStatus({ type: "error", message: "Submission rejected." });
       setLoading(false);
@@ -25,8 +47,10 @@ export default function ContactPage() {
     }
 
     const payload = {
-      firstName: (form.elements.namedItem("firstName") as HTMLInputElement)?.value?.trim(),
-      lastName: (form.elements.namedItem("lastName") as HTMLInputElement)?.value?.trim(),
+      firstName: (form.elements.namedItem("firstName") as HTMLInputElement)
+        ?.value?.trim(),
+      lastName: (form.elements.namedItem("lastName") as HTMLInputElement)?.value
+        ?.trim(),
       email: (form.elements.namedItem("email") as HTMLInputElement)?.value?.trim(),
       phone: (form.elements.namedItem("phone") as HTMLInputElement)?.value?.trim(),
       message: (form.elements.namedItem("message") as HTMLTextAreaElement)?.value?.trim(),
@@ -41,7 +65,10 @@ export default function ContactPage() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || "Failed to send email");
 
-      setStatus({ type: "success", message: "Email sent successfully! We'll be in touch soon." });
+      setStatus({
+        type: "success",
+        message: "Email sent successfully! We'll be in touch soon.",
+      });
       form.reset();
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Something went wrong.";
@@ -52,19 +79,20 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="text-gray-900">
+    <div className="text-gray-900 flex flex-col min-h-screen">
       <Navbar />
 
-      {/* HERO (image removed; fully responsive) */}
+      {/* HERO */}
       <section className="relative isolate overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 text-white">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-24 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold [text-wrap:balance]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-5">
             Let’s <span className="text-white">Connect</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-blue-100 max-w-2xl mx-auto text-base sm:text-lg">
-            Have an idea or a project in mind? Let’s build something amazing together.
+            Have an idea or a project in mind? Let’s build something amazing
+            together.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3.5 sm:gap-4">
             <a
@@ -83,22 +111,42 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CONTACT INFO STRIP */}
+      {/* CONTACT INFO */}
       <section id="info" className="py-8 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { Icon: Mail, label: "Email", value: "hello@techdirectsupport.com", href: "mailto:hello@techdirectsupport.com" },
-              { Icon: Phone, label: "Phone", value: "+61 2 5555 1234", href: "tel:+61255551234" },
-              { Icon: MapPin, label: "Address", value: "200 Gilchrist Dr, Macarthur Square NSW 2560" },
+              {
+                Icon: Mail,
+                label: "Email",
+                value: "operations@techdirectsupport.com.au",
+                href: "mailto:operations@techdirectsupport.com.au",
+              },
+              {
+                Icon: Phone,
+                label: "Phone",
+                value: "0450-424-786",
+                href: "tel:0450-424-786",
+              },
+              {
+                Icon: MapPin,
+                label: "Address",
+                value: "200 Gilchrist Drive, Macarthur Square, NSW 2560",
+              },
               { Icon: Clock, label: "Hours", value: "Mon–Fri, 9:00–18:00" },
             ].map((c) => (
-              <div key={c.label} className="flex items-start gap-3 rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
-                <c.Icon className="mt-0.5 h-5 w-5 text-blue-600" />
+              <div
+                key={c.label}
+                className="flex items-start gap-3 rounded-xl border border-gray-100 bg-white p-4 shadow-sm"
+              >
+                <c.Icon className="mt-0.5 h-5 w-5 text-blue-600 flex-shrink-0" />
                 <div className="text-sm">
                   <p className="font-medium text-gray-900">{c.label}</p>
                   {c.href ? (
-                    <a href={c.href} className="text-gray-600 hover:text-blue-700 break-words">
+                    <a
+                      href={c.href}
+                      className="text-gray-600 hover:text-blue-700 break-words"
+                    >
                       {c.value}
                     </a>
                   ) : (
@@ -111,24 +159,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CONTACT SECTION */}
-      <section id="contact" className="py-16 sm:py-20 relative z-10">
+      {/* CONTACT FORM + MAP */}
+      <section id="contact" className="py-16 sm:py-20 flex-1">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 px-4 sm:px-6 lg:px-8 items-stretch">
-          {/* Left - Map (full height on lg, ratio on mobile) */}
+          {/* Map */}
           <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 h-full">
-            {/* Desktop/tablet: fill full card height */}
-            <div className="hidden lg:block relative w-full h-full" style={{ minHeight: 560 }}>
-              <iframe
-                title="Our Location"
-                src="https://www.google.com/maps?q=200%20Gilchrist%20Drive%20Macarthur%20Square%20NSW%202560&output=embed"
-                className="absolute inset-0 w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-            {/* Mobile: maintain a clean 16:9 ratio */}
-            <div className="block lg:hidden relative w-full" style={{ paddingTop: "56.25%" }}>
+            <div className="relative w-full h-64 sm:h-80 md:h-full">
               <iframe
                 title="Our Location"
                 src="https://www.google.com/maps?q=200%20Gilchrist%20Drive%20Macarthur%20Square%20NSW%202560&output=embed"
@@ -140,31 +176,42 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right - Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 h-full flex flex-col">
+          {/* Form */}
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col">
             <div className="px-6 py-5 border-b border-gray-200">
               <h2 className="text-2xl font-semibold text-gray-900">Contact Us</h2>
               <div className="mt-1 h-[3px] w-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full" />
             </div>
 
-            {/* Status (accessible) */}
+            {/* Status */}
             <div aria-live="polite" className="px-6 pt-4">
               {status?.type === "success" && (
-                <p className="rounded-md bg-green-50 text-green-700 text-sm px-3 py-2 border border-green-200">{status.message}</p>
+                <p className="rounded-md bg-green-50 text-green-700 text-sm px-3 py-2 border border-green-200">
+                  {status.message}
+                </p>
               )}
               {status?.type === "error" && (
-                <p className="rounded-md bg-red-50 text-red-700 text-sm px-3 py-2 border border-red-200">{status.message}</p>
+                <p className="rounded-md bg-red-50 text-red-700 text-sm px-3 py-2 border border-red-200">
+                  {status.message}
+                </p>
               )}
             </div>
 
             <form onSubmit={submitContact} className="p-6 space-y-6">
-              {/* Honeypot */}
-              <input type="text" name="company" className="hidden" tabIndex={-1} autoComplete="off" />
+              <input
+                type="text"
+                name="company"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">First Name *</label>
-                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-0">
+                  <label className="block text-sm font-medium text-gray-700">
+                    First Name *
+                  </label>
+                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600">
                     <User className="h-4 w-4 text-gray-400 mx-3" />
                     <input
                       type="text"
@@ -175,8 +222,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Last Name *</label>
-                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-0">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Last Name *
+                  </label>
+                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600">
                     <User className="h-4 w-4 text-gray-400 mx-3" />
                     <input
                       type="text"
@@ -190,8 +239,10 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Email *</label>
-                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-0">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Email *
+                  </label>
+                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600">
                     <Mail className="h-4 w-4 text-gray-400 mx-3" />
                     <input
                       type="email"
@@ -202,15 +253,16 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Phone *</label>
-                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-0">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Phone *
+                  </label>
+                  <div className="mt-1 flex items-center rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600">
                     <Phone className="h-4 w-4 text-gray-400 mx-3" />
                     <input
                       type="tel"
                       name="phone"
                       required
                       inputMode="tel"
-                      pattern="[+0-9()\\-\\s]{6,}"
                       className="flex-1 bg-transparent px-1 py-2 text-sm focus:outline-none"
                     />
                   </div>
@@ -218,21 +270,24 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Message *</label>
-                <div className="mt-1 flex items-start rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-0">
+                <label className="block text-sm font-medium text-gray-700">
+                  Message *
+                </label>
+                <div className="mt-1 flex items-start rounded-md border border-gray-300 focus-within:ring-2 focus-within:ring-blue-600">
                   <MessageSquare className="h-4 w-4 text-gray-400 mx-3 mt-2" />
                   <textarea
                     name="message"
                     rows={4}
                     required
-                    className="flex-1 bg-transparent px-1 py-2 text-sm focus:outline-none resize-y min-h-[120px]"
+                    className="flex-1 bg-transparent px-1 py-2 text-sm focus:outline-none resize-y"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <p className="text-xs text-gray-500">
-                  We typically reply within one business day. Your information is kept private.
+                  We typically reply within one business day. Your information is
+                  kept private.
                 </p>
                 <button
                   type="submit"
@@ -247,16 +302,28 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* OPTIONAL FAQ */}
+      {/* FAQ */}
       <section className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:gap-8">
             {[
-              { q: "How soon do you respond?", a: "Within one business day for most inquiries." },
-              { q: "Do you sign NDAs?", a: "Yes, we can sign your NDA or provide ours before discussing details." },
-              { q: "Which industries do you serve?", a: "We work across e-commerce, healthcare, fintech, SaaS, and more." },
+              {
+                q: "How soon do you respond?",
+                a: "Within one business day for most inquiries.",
+              },
+              {
+                q: "Do you sign NDAs?",
+                a: "Yes, we can sign your NDA or provide ours before discussing details.",
+              },
+              {
+                q: "Which industries do you serve?",
+                a: "We work across e-commerce, healthcare, fintech, SaaS, and more.",
+              },
             ].map((f) => (
-              <div key={f.q} className="rounded-xl border border-gray-100 p-5 bg-gray-50">
+              <div
+                key={f.q}
+                className="rounded-xl border border-gray-100 p-5 bg-gray-50"
+              >
                 <h3 className="font-semibold text-gray-900">{f.q}</h3>
                 <p className="mt-1 text-sm text-gray-600">{f.a}</p>
               </div>
