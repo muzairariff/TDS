@@ -89,7 +89,7 @@ export default function CareersPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
           <div className="max-w-3xl">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={fadeUp}>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight mt-5">
                 Build the future with{" "}
                 <span className="text-cyan-300">TechDirectSupport</span>
               </h1>

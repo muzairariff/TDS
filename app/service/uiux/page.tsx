@@ -42,12 +42,12 @@ export default function UIDesignPage() {
           >
             Start Your Project
           </Link>
-          <Link
+          {/* <Link
             href="/portfolio"
             className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold transition text-center"
           >
             View Portfolio
-          </Link>
+          </Link> */}
         </div>
       </motion.div>
 
@@ -94,26 +94,64 @@ export default function UIDesignPage() {
       </section>
 
       {/* DESIGN TOOLS */}
-      <section className="py-16 sm:py-20 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Design Tools We Use</h2>
-          <p className="mt-3 text-gray-600">We master the industry’s most powerful tools to deliver top-class designs.</p>
-          <div className="mt-12 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-10">
-            {[
-              { Icon: SiFigma, label: "Figma", color: "#F24E1E" },
-              { Icon: SiSketch, label: "Sketch", color: "#F7B500" },
-              { Icon: SiAdobexd, label: "Adobe XD", color: "#FF61F6" },
-              { Icon: SiAdobephotoshop, label: "Photoshop", color: "#31A8FF" },
-              { Icon: SiAdobeillustrator, label: "Illustrator", color: "#FF9A00" },
-            ].map((tool, i) => (
-              <motion.div key={tool.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} viewport={{ once: true }} whileHover={{ scale: 1.12 }} className="flex flex-col items-center p-4 sm:p-5 rounded-lg bg-gray-50 shadow-sm hover:shadow-md transition cursor-pointer">
-                <tool.Icon className="h-10 w-10 sm:h-12 sm:w-12" style={{ color: tool.color }} />
-                <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium">{tool.label}</span>
-              </motion.div>
-            ))}
+<section className="py-20 md:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+        Design Tools We Use
+      </h2>
+      <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        We master the industry’s most powerful tools to deliver top-class designs.
+      </p>
+    </motion.div>
+
+    {/* Grid */}
+    <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-10">
+      {[
+        { Icon: SiFigma, label: "Figma", color: "#F24E1E" },
+        { Icon: SiSketch, label: "Sketch", color: "#F7B500" },
+        { Icon: SiAdobexd, label: "Adobe XD", color: "#FF61F6" },
+        { Icon: SiAdobephotoshop, label: "Photoshop", color: "#31A8FF" },
+        { Icon: SiAdobeillustrator, label: "Illustrator", color: "#FF9A00" },
+      ].map((tool, i) => (
+        <motion.div
+          key={tool.label}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.08 }}
+          whileHover={{ y: -8, scale: 1.05 }}
+          className="relative flex flex-col items-center justify-center rounded-2xl p-6 sm:p-8 bg-white shadow-md hover:shadow-2xl transition overflow-hidden border border-gray-100 group"
+        >
+          {/* Gradient Ring Behind Icon */}
+          <div
+            className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition"
+          />
+
+          <div
+            className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 group-hover:from-white group-hover:to-gray-50 shadow-inner"
+          >
+            <tool.Icon
+              className="h-8 w-8 sm:h-10 sm:w-10"
+              style={{ color: tool.color }}
+            />
           </div>
-        </div>
-      </section>
+
+          <span className="mt-4 text-sm sm:text-base font-semibold text-gray-900">
+            {tool.label}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       {/* NEW — UX PRINCIPLES */}
       <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
@@ -140,77 +178,161 @@ export default function UIDesignPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="py-16 sm:py-20 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Our Design Process</h2>
-          <p className="mt-3 text-gray-600">A structured and transparent workflow ensures beautiful and usable results.</p>
-          <div className="mt-12 md:mt-16 relative">
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-200" />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-10 relative z-10">
-              {[
-                { icon: SiFigma as IconType, title: "Research", color: "#F24E1E" },
-                { icon: SiSketch as IconType, title: "Wireframes", color: "#F7B500" },
-                { icon: SiAdobexd as IconType, title: "UI Design", color: "#FF61F6" },
-                { icon: FaUsers as IconType, title: "Testing", color: "#2563EB" },
-                { icon: FaLaptopCode as IconType, title: "Handoff", color: "#16A34A" },
-              ].map((step, i) => (
-                <motion.div key={step.title} {...fadeUp(i * 0.15)} whileHover={{ scale: 1.05 }} className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full shadow-md" style={{ background: `${step.color}22` }}>
-                    <step.icon className="h-6 w-6 sm:h-7 sm:w-7" style={{ color: step.color }} />
-                  </div>
-                  <h3 className="mt-3 sm:mt-4 text-sm sm:text-lg font-semibold">{step.title}</h3>
-                </motion.div>
+     <section className="py-20 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+        Our Design Process
+      </h2>
+      <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        A structured and transparent workflow ensures beautiful and usable results.
+      </p>
+    </motion.div>
+
+    {/* Steps */}
+    <div className="mt-16 relative">
+      {/* Connector line for desktop */}
+      <div className="hidden md:block absolute top-1/2 left-0 w-full h-[3px] bg-gradient-to-r from-blue-200 via-gray-200 to-blue-200" />
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 relative z-10">
+        {[
+          { icon: SiFigma as IconType, title: "Research", color: "#F24E1E" },
+          { icon: SiSketch as IconType, title: "Wireframes", color: "#F7B500" },
+          { icon: SiAdobexd as IconType, title: "UI Design", color: "#FF61F6" },
+          { icon: FaUsers as IconType, title: "Testing", color: "#2563EB" },
+          { icon: FaLaptopCode as IconType, title: "Handoff", color: "#16A34A" },
+        ].map((step, i) => (
+          <motion.div
+            key={step.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
+            whileHover={{ y: -6 }}
+            className="flex flex-col items-center text-center bg-white rounded-2xl shadow-md p-6 sm:p-7 hover:shadow-xl transition"
+          >
+            {/* Step number */}
+            <span className="text-xs font-bold text-gray-500 mb-2">
+              Step {i + 1}
+            </span>
+
+            {/* Icon */}
+            <div
+              className="w-16 h-16 flex items-center justify-center rounded-full shadow-inner"
+              style={{ background: `${step.color}22` }}
+            >
+              <step.icon
+                className="h-7 w-7"
+                style={{ color: step.color }}
+              />
+            </div>
+
+            {/* Title */}
+            <h3 className="mt-4 text-base sm:text-lg font-semibold text-gray-900">
+              {step.title}
+            </h3>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* NEW — DELIVERABLES */}
+ <section className="py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="text-center"
+    >
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+        What You Get
+      </h2>
+      <p className="mt-3 text-gray-600">
+        Clear, production-ready outputs at each milestone.
+      </p>
+    </motion.div>
+
+    {/* Cards */}
+    <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Research Pack",
+          items: ["Personas", "Journey Maps", "Competitive Analysis"],
+          icons: [SiFigma, SiNotion],
+          color: "bg-pink-400",
+        },
+        {
+          title: "Design System",
+          items: ["Tokens", "Components", "Patterns (Storybook)"],
+          icons: [SiStorybook, SiFigma],
+          color: "bg-blue-400",
+        },
+        {
+          title: "Handoff Kit",
+          items: ["Specs in Figma", "Clickable Prototypes", "Notion Docs"],
+          icons: [SiFigma, SiNotion],
+          color: "bg-green-400",
+        },
+      ].map((card, i) => (
+        <motion.div
+          key={card.title}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          whileHover={{ y: -6 }}
+          className="rounded-2xl shadow-md hover:shadow-xl transition bg-white border border-gray-100 flex flex-col overflow-hidden"
+        >
+          {/* Header */}
+          <div className={`${card.color} py-4 px-5`}>
+            <span className="font-semibold text-lg text-white">
+              {card.title}
+            </span>
+          </div>
+
+          {/* Content */}
+          <div className="p-6 flex-1 flex flex-col">
+            <ul className="space-y-3 text-gray-700 text-sm">
+              {card.items.map((it) => (
+                <li
+                  key={it}
+                  className="flex items-center gap-2 border-b border-gray-100 pb-2 last:border-none"
+                >
+                  <FaCheckCircle className="h-4 w-4 text-green-600" />
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Icons at bottom */}
+            <div className="mt-6 flex gap-3 text-gray-500">
+              {card.icons.map((Icon, idx) => (
+                <Icon key={idx} className="h-5 w-5" />
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* NEW — DELIVERABLES */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold">What You Get</h2>
-            <p className="mt-3 text-gray-600">Clear, production-ready outputs at each milestone.</p>
-          </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                title: "Research Pack",
-                items: ["Personas", "Journey Maps", "Competitive Analysis"],
-              },
-              {
-                title: "Design System",
-                items: ["Tokens", "Components", "Patterns (Storybook)"],
-              },
-              {
-                title: "Handoff Kit",
-                items: ["Specs in Figma", "Clickable Prototypes", "Notion Docs"],
-              },
-            ].map((card, i) => (
-              <motion.div key={card.title} {...fadeUp(i * 0.1)} className="p-6 sm:p-7 bg-white rounded-2xl shadow border border-gray-100">
-                <h3 className="text-lg font-semibold">{card.title}</h3>
-                <ul className="mt-4 space-y-2 text-gray-700 text-sm">
-                  {card.items.map((it) => (
-                    <li key={it} className="flex items-start gap-2">
-                      <FaCheckCircle className="mt-0.5 h-4 w-4 text-green-600" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex gap-3 text-gray-500">
-                  <SiStorybook className="h-5 w-5" />
-                  <SiFigma className="h-5 w-5" />
-                  <SiNotion className="h-5 w-5" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* CASE STUDIES */}
-      <section className="py-16 sm:py-20 md:py-24 bg-white">
+      {/* <section className="py-16 sm:py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Case Studies</h2>
           <p className="mt-3 text-gray-600">A showcase of our most impactful UI/UX projects.</p>
@@ -224,7 +346,7 @@ export default function UIDesignPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* NEW — TESTIMONIALS */}
       <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
@@ -276,7 +398,7 @@ export default function UIDesignPage() {
           <p className="mt-3 sm:mt-4 text-blue-100 text-base sm:text-lg">Transform your ideas into user experiences people love.</p>
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3.5 sm:gap-4">
             <Link href="/contact" className="w-full sm:w-auto rounded-lg bg-white px-7 sm:px-8 py-3 text-base font-semibold text-blue-600 hover:bg-gray-100 transition text-center">Contact Us</Link>
-            <Link href="/portfolio" className="w-full sm:w-auto rounded-lg border-2 border-white px-7 sm:px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition text-center">View Portfolio</Link>
+            {/* <Link href="/portfolio" className="w-full sm:w-auto rounded-lg border-2 border-white px-7 sm:px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition text-center">View Portfolio</Link> */}
           </div>
         </div>
       </section>

@@ -6,6 +6,7 @@ import { motion, AnimatePresence, MotionProps } from "framer-motion";
 import CountUp from "react-countup";
 import Navbar from "@/app/src/components/Navbar";
 import Footer from "@/app/src/components/Footer";
+import Link from "next/link";
 
 import {
   FaUserShield,
@@ -37,7 +38,7 @@ export default function OperationsPage() {
   const testimonials = [
     {
       quote:
-        "Their operations team streamlined our multi-site rollout. Reporting is crisp and issues are resolved before they hit us.",
+        "Their operations team streamlined our multi-site rollout. Reporting is crisp and issues are resolved.",
       name: "Sarah Johnson",
       role: "COO, BrightWorks",
     },
@@ -135,9 +136,9 @@ export default function OperationsPage() {
 ];
 
   const leaders = [
-    { name: "Ayesha Khan", role: "Head of Operations", initials: "AK" },
-    { name: "Daniel Lee", role: "Director, Service Delivery", initials: "DL" },
-    { name: "Maria Garcia", role: "Ops Analytics Lead", initials: "MG" },
+    { name: "Jahanzaib Babar", role: "CEO", initials: "JB" },
+    { name: "Aamir Khan", role: "Operational Support", initials: "AK" },
+    { name: "Jamshed Ali", role: "Technical Lead", initials: "JA" },
   ];
 
   return (
@@ -210,28 +211,33 @@ export default function OperationsPage() {
       </section>
 
       {/* COUNTERS */}
-      <section className="py-16" style={{ background: "#eaf4ff" }}>
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((s, i) => (
-              <motion.div key={s.label} {...fadeUp(i * 0.05)}>
-                <div className="text-4xl font-extrabold text-blue-600">
-                  <CountUp
-                    start={0}
-                    end={s.value}
-                    duration={2.8}
-                    decimals={s.suffix === "%" ? 1 : 0}
-                    suffix={s.suffix ?? ""}
-                    enableScrollSpy
-                    scrollSpyOnce
-                  />
-                </div>
-                <p className="text-gray-700 mt-2 font-medium">{s.label}</p>
-              </motion.div>
-            ))}
+    <section className="py-20" style={{ background: "#eaf4ff" }}>
+  <div className="mx-auto max-w-6xl px-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      {stats.map((s, i) => (
+        <motion.div key={s.label} {...fadeUp(i * 0.08)}>
+          {/* Number */}
+          <div className="text-5xl font-bold text-blue-700">
+            <CountUp
+              start={0}
+              end={s.value}
+              duration={2.5}
+              decimals={s.suffix === "%" ? 1 : 0}
+              suffix={s.suffix ?? ""}
+              enableScrollSpy
+              scrollSpyOnce
+            />
           </div>
-        </div>
-      </section>
+
+          {/* Label */}
+          <p className="mt-3 text-gray-700 font-medium">{s.label}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       {/* WORKFLOW */}
       <section className="py-16">
@@ -336,31 +342,19 @@ export default function OperationsPage() {
         </div>
       </section>
 
+     
       {/* CTA */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r" />
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
-          <div className="grid items-center gap-6 md:grid-cols-2">
-            <motion.div {...fadeUp(0)}>
-              <h3 className="text-2xl font-extrabold">Ready to elevate your Operations?</h3>
-              <p className="mt-2 text-gray-600">
-                We’ll review your goals and share a concrete plan within 48 hours.
-              </p>
-            </motion.div>
-            <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-3 md:justify-end">
-              <a
-                href="/contact"
-                className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700"
-              >
-                Get a Proposal
-              </a>
-              <a
-                href="/company/about"
-                className="rounded-full border-2 border-blue-600 px-6 py-3 text-sm font-semibold text-blue-700 hover:bg-blue-50"
-              >
-                Learn more
-              </a>
-            </motion.div>
+      <section className="bg-blue-600 text-white py-14 sm:py-16 md:py-20 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold [text-wrap:balance]">
+  Reliable Operational Support for Your Business
+</h2>
+<p className="mt-3 sm:mt-4 text-blue-100 text-base sm:text-lg">
+  Streamlining your operations with dedicated support that keeps everything running smoothly.
+</p>
+          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3.5 sm:gap-4">
+            <Link href="/contact" className="w-full sm:w-auto rounded-lg bg-white px-7 sm:px-8 py-3 text-base font-semibold text-blue-600 hover:bg-gray-100 transition text-center">Contact Us</Link>
+            {/* <Link href="/portfolio" className="w-full sm:w-auto rounded-lg border-2 border-white px-7 sm:px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition text-center">View Portfolio</Link> */}
           </div>
         </div>
       </section>

@@ -66,8 +66,7 @@ export default function AboutUsPage() {
           We are a passionate team of{" "}
           <span className="font-bold text-gray-900">developers, designers, and innovators</span>, 
           crafting <span className="text-primary font-bold">world-class digital solutions</span>.  
-          From modern apps to enterprise-grade platforms, we empower businesses 
-          to <span className="font-bold text-accent">grow with technology</span>.
+        
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
@@ -77,12 +76,12 @@ export default function AboutUsPage() {
           >
             Let’s Work Together
           </Link>
-          <Link
+          {/* <Link
             href="/portfolio"
             className="rounded-full border-2 border-primary px-10 py-5 text-lg sm:text-xl font-semibold text-primary hover:bg-primary/10 transition"
           >
             Our Work
-          </Link>
+          </Link> */}
         </div>
       </motion.div>
 
@@ -249,25 +248,37 @@ export default function AboutUsPage() {
             The passionate people who bring our vision to life.
           </p>
 
-          <div className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { name: "Sarah Johnson", role: "CEO & Founder", img: "/assets/images/team/team-1.png" },
-              { name: "Michael Lee", role: "CTO", img: "/assets/images/team/team-2.png" },
-              { name: "Emily Davis", role: "Lead Designer", img: "/assets/images/team/team-3.png" },
-              { name: "James Smith", role: "Full Stack Developer", img: "/assets/images/team/team-4.png" },
-            ].map((member, i) => (
-              <motion.div key={member.name} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }} className="group relative rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-xl transition">
-                {/* Image */}
-                <div className="relative h-64 w-full overflow-hidden">
-                  <Image src={member.img} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-                {/* Text */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center w-[90%]">
-                  <h3 className="text-lg font-semibold text-white drop-shadow-md">{member.name}</h3>
-                  <p className="text-sm text-gray-200">{member.role}</p>
-                </div>
-              </motion.div>
+         <div className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+  {[
+    { name: "Jahanzaib Babar", role: "CEO & Founder", img: "/assets/images/teams/team-1.png" },
+    { name: "Michael Lee", role: "CTO", img: "/assets/images/team/team-2.png" },
+    { name: "Emily Davis", role: "Lead Designer", img: "/assets/images/team/team-3.png" },
+    { name: "James Smith", role: "Full Stack Developer", img: "/assets/images/team/team-4.png" },
+  ].map((member, i) => (
+               <motion.div
+      key={member.name}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: i * 0.08 }}
+      className="group relative bg-white shadow-md overflow-hidden hover:shadow-xl transition"
+    >
+      {/* Image */}
+      <div className="relative h-64 w-full overflow-hidden">
+        <Image
+          src={member.img}
+          alt={member.name}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </div>
+      {/* Text */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center w-[90%]">
+        <h3 className="text-lg font-semibold text-white drop-shadow-md">{member.name}</h3>
+        <p className="text-sm text-gray-200">{member.role}</p>
+      </div>
+    </motion.div>
             ))}
           </div>
         </div>
@@ -293,7 +304,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative bg-gradient-to-r from-primary via-blue-600 to-cyan-500 text-white py-14 sm:py-16 md:py-20">
+      <section className="relative bg-blue-600 to-cyan-500 text-white py-14 sm:py-16 md:py-20">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold [text-wrap:balance]">Let’s Build the Future Together</h2>
@@ -302,9 +313,9 @@ export default function AboutUsPage() {
             <Link href="/contact" className="w-full sm:w-auto rounded-full bg-white px-7 py-3 text-sm font-semibold text-primary hover:bg-gray-100 transition text-center">
               Contact Us
             </Link>
-            <Link href="/portfolio" className="w-full sm:w-auto rounded-full border-2 border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 transition text-center">
+            {/* <Link href="/portfolio" className="w-full sm:w-auto rounded-full border-2 border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 transition text-center">
               View Portfolio
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

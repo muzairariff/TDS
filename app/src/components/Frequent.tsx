@@ -39,42 +39,48 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <div
-      className={`rounded-xl border transition-colors duration-300 ${
-        isOpen ? "border-blue-500 bg-blue-50/50" : "border-gray-200 bg-white"
-      } shadow-sm`}
+    <motion.div
+      layout
+      className={`rounded-2xl transition-all duration-300 border shadow-sm hover:shadow-md cursor-pointer ${
+        isOpen ? "border-blue-500 bg-blue-50/60" : "border-gray-200 bg-white"
+      }`}
     >
       <button
         onClick={onClick}
-        className="flex w-full items-center justify-between px-5 sm:px-6 py-4 text-left"
+        className="flex w-full items-center justify-between px-6 py-5 text-left"
         aria-expanded={isOpen}
         aria-controls={`faq-${question}`}
       >
-        <span className="text-base sm:text-lg font-semibold text-gray-900">{question}</span>
+        <span className="text-base sm:text-lg font-semibold text-gray-900">
+          {question}
+        </span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className={`p-1.5 rounded-full ${isOpen ? "bg-blue-500 text-white" : "bg-gray-100 text-blue-500"}`}
+          className={`p-1.5 rounded-full ${
+            isOpen ? "bg-blue-500 text-white" : "bg-gray-100 text-blue-500"
+          }`}
         >
           <ChevronDown className="h-5 w-5" />
         </motion.span>
       </button>
 
       <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={`faq-${question}`}
-            initial={{ opacity: 0, maxHeight: 0 }}
-            animate={{ opacity: 1, maxHeight: 500 }}
-            exit={{ opacity: 0, maxHeight: 0 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="overflow-hidden px-5 sm:px-6 pb-4"
-          >
-            <p className="text-gray-600 leading-relaxed">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+  {isOpen && (
+    <motion.div
+      id={`faq-${question}`}
+      initial={{ opacity: 0, y: -6, maxHeight: 0 }}
+      animate={{ opacity: 1, y: 0, maxHeight: 500 }}
+      exit={{ opacity: 0, y: -6, maxHeight: 0 }}
+      transition={{ duration: 0.45, ease: "easeInOut" }}
+      className="overflow-hidden px-6 pb-5"
+    >
+      <p className="text-gray-600 leading-relaxed">{answer}</p>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+    </motion.div>
   );
 }
 
@@ -82,19 +88,25 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 sm:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden overflow-y-visible">
+    <section className="relative py-20 sm:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
+        {/* Heading */}
         <div className="text-center mb-14 sm:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Frequently Asked <span className="text-blue-600">Questions</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3">
+            Frequently Asked{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Questions
+            </span>
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Everything you need to know about our services, support, and solutions. If you have more questions,
-            feel free to contact us.
+            Everything you need to know about our services, support, and
+            solutions. Still curious?{" "}
+            <span className="text-blue-600 font-medium">Contact us.</span>
           </p>
         </div>
 
-        <div className="space-y-4">
+        {/* FAQ Items */}
+        <div className="space-y-5">
           {faqs.map((faq, idx) => (
             <FAQItem
               key={idx}

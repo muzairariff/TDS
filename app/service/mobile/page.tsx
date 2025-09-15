@@ -89,29 +89,29 @@ export default function MobileAppDevelopmentPage() {
               >
                 Get a Proposal
               </Link>
-              <Link
+              {/* <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold transition"
               >
                 View Portfolio
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
 
-      {/* Right Phone Mockup */}
-<div className="relative order-1 lg:order-2 flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[650px] lg:min-h-[750px]">
-  <div className="relative drop-shadow-2xl rotate-6">
-    <Image
-      src="/assets/images/mobile-hero-5.jpg"
-      alt="Phone mockup"
-      width={500}
-      height={1000}
-      className="w-[18rem] sm:w-[22rem] md:w-[26rem] lg:w-[30rem] h-auto rounded-2xl"
-      sizes="(max-width: 640px) 288px, (max-width: 768px) 352px, (max-width: 1024px) 416px, 480px"
-      priority
-    />
-  </div>
-</div>
+          {/* Right Phone Mockup */}
+          <div className="relative order-1 lg:order-2 flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[650px] lg:min-h-[750px]">
+            <div className="relative drop-shadow-2xl rotate-6">
+              <Image
+                src="/assets/images/mobile-hero-5.jpg"
+                alt="Phone mockup"
+                width={500}
+                height={1000}
+                className="w-[18rem] sm:w-[22rem] md:w-[26rem] lg:w-[30rem] h-auto rounded-2xl"
+                sizes="(max-width: 640px) 288px, (max-width: 768px) 352px, (max-width: 1024px) 416px, 480px"
+                priority
+              />
+            </div>
+          </div>
 
 
 
@@ -207,113 +207,136 @@ export default function MobileAppDevelopmentPage() {
 
 
       {/* EXTRA FEATURES */}
-      <section className="py-20 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Extraordinary Features</h2>
-          <p className="mt-3 text-gray-600">Enhancing your apps with powerful features users love.</p>
+   <section className="py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* Heading */}
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+      Powerful <span className="text-blue-600">Capabilities</span>
+    </h2>
+    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+      Elevating your apps with features designed to deliver seamless, secure, and user-friendly experiences.
+    </p>
 
-          <div className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {[
-              { Icon: FaBell, title: "Push Notifications", color: "#3B82F6" },
-              { Icon: FaMapMarkedAlt, title: "GPS & Maps", color: "#22C55E" },
-              { Icon: FaCreditCard, title: "Payment Gateways", color: "#F59E0B" },
-              { Icon: FaBolt, title: "Offline Mode", color: "#EF4444" },
-              { Icon: FaVrCardboard, title: "AR / VR Support", color: "#7C3AED" },
-              { Icon: FaFingerprint, title: "Biometric Login", color: "#0EA5E9" },
-              { Icon: FaComments, title: "In-App Chat", color: "#2563EB" },
-              { Icon: FaChartBar, title: "Analytics Dashboard", color: "#10B981" },
-            ].map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ scale: 1.06 }}
-                className="p-6 sm:p-8 bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 transition"
-              >
-                <div
-                  className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full shadow-md"
-                  style={{ background: `linear-gradient(135deg, ${f.color}22, ${f.color}44)` }}
-                >
-                  <f.Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: f.color }} />
-                </div>
-                <h3 className="mt-5 sm:mt-6 text-base sm:text-lg font-semibold text-gray-900">{f.title}</h3>
-              </motion.div>
-            ))}
+    {/* Features Grid */}
+    <div className="mt-14 grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {[
+        { Icon: FaBell, title: "Push Notifications", color: "#3B82F6" },
+        { Icon: FaMapMarkedAlt, title: "GPS & Maps", color: "#22C55E" },
+        { Icon: FaCreditCard, title: "Payment Gateways", color: "#F59E0B" },
+        { Icon: FaBolt, title: "Offline Mode", color: "#EF4444" },
+        { Icon: FaVrCardboard, title: "AR / VR Support", color: "#7C3AED" },
+        { Icon: FaFingerprint, title: "Biometric Login", color: "#0EA5E9" },
+        { Icon: FaComments, title: "In-App Chat", color: "#2563EB" },
+        { Icon: FaChartBar, title: "Analytics Dashboard", color: "#10B981" },
+      ].map((f, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: i * 0.08 }}
+          viewport={{ once: true, amount: 0.2 }}
+          whileHover={{ y: -6 }}
+          className="p-7 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition flex flex-col items-center text-center"
+        >
+          {/* Icon */}
+          <div
+            className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-md"
+            style={{
+              background: `linear-gradient(135deg, ${f.color}22, ${f.color}44)`,
+            }}
+          >
+            <f.Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: f.color }} />
           </div>
-        </div>
-      </section>
+
+          {/* Title */}
+          <h3 className="mt-5 sm:mt-6 text-base sm:text-lg font-semibold text-gray-900">
+            {f.title}
+          </h3>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* PROCESS */}
-      <section className="py-20 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Development Process</h2>
-          <p className="mt-3 text-gray-600">
-            A transparent, structured workflow ensuring quality and timely delivery.
-          </p>
+      <section className="py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
+  <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+        Our Development Process
+      </h2>
+      <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+        A transparent, structured workflow ensuring quality and timely delivery.
+      </p>
+    </motion.div>
 
-          <div className="mt-12 md:mt-16 relative">
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-200" />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 sm:gap-8 relative z-10">
-              {[
-                { Icon: FaSearch, title: "Discovery" },
-                { Icon: FaRulerCombined, title: "Design" },
-                { Icon: FaCode, title: "Development" },
-                { Icon: FaFlask, title: "Testing" },
-                { Icon: FaUpload, title: "Deployment" },
-                { Icon: FaHeadset, title: "Support" },
-              ].map((step, i) => (
-                <motion.div
-                  key={step.title}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  custom={i}
-                  whileHover={{ scale: 1.04 }}
-                  className="flex flex-col items-center text-center"
-                >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
-                    <step.Icon className="h-6 w-6 sm:h-7 sm:w-7" />
-                  </div>
-                  <h3 className="mt-3 sm:mt-4 text-sm sm:text-base font-semibold text-gray-900">
-                    {step.title}
-                  </h3>
-                </motion.div>
-              ))}
-            </div>
+    <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 relative">
+      {[
+        { Icon: FaSearch, title: "Discovery", desc: "Understanding requirements and defining goals." },
+        { Icon: FaRulerCombined, title: "Design", desc: "Crafting intuitive and engaging user experiences." },
+        { Icon: FaCode, title: "Development", desc: "Building scalable, high-performance solutions." },
+        { Icon: FaFlask, title: "Testing", desc: "Ensuring quality, functionality, and reliability." },
+        { Icon: FaUpload, title: "Deployment", desc: "Seamless launch with minimal downtime." },
+        { Icon: FaHeadset, title: "Support", desc: "Ongoing maintenance and continuous improvements." },
+      ].map((step, i) => (
+        <motion.div
+          key={step.title}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          custom={i}
+          whileHover={{ y: -6 }}
+          className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition flex flex-col items-center text-center"
+        >
+          {/* Step Number */}
+          <span className="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">
+            Step {i + 1}
+          </span>
+
+          {/* Icon */}
+          <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
+            <step.Icon className="h-7 w-7" />
           </div>
-        </div>
-      </section>
+
+          {/* Title */}
+          <h3 className="mt-4 text-lg font-semibold text-gray-900">{step.title}</h3>
+
+          {/* Description */}
+          <p className="mt-2 text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
       {/* CASE STUDIES */}
-      <section className="py-20 md:py-24 bg-gray-50">
+      {/* <section className="py-20 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Case Studies</h2>
-          <p className="mt-3 text-gray-600">Our proven work across industries.</p>
-          <div className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {["health-app.jpg", "ecommerce-app.jpg", "education-app.jpg"].map((img, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.02 }}
-                className="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white"
-              >
-                <div className="relative w-full aspect-[4/3]">
-                  <Image
-                    src={`/assets/images/${img}`}
-                    alt="Mobile App Project"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-              </motion.div>
-            ))}
+
+
+          <div className="mt-12">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white max-w-4xl mx-auto"
+            >
+              <div className="relative w-full aspect-[16/9]">
+               <Image
+  src="/assets/images/case.png"
+  alt="Case Studies"
+  fill
+  priority
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
+  className="object-cover"
+/>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="bg-blue-600 text-white py-16 sm:py-20 text-center">
