@@ -1,9 +1,13 @@
-// src/components/Footer.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import {
+  LuFacebook,
+  LuInstagram,
+  LuLinkedin,
+  LuTwitter,
+} from "react-icons/lu";
 
 export default function Footer() {
   return (
@@ -47,11 +51,6 @@ export default function Footer() {
                 Operations
               </Link>
             </li>
-            {/* <li>
-              <Link href="/" className="hover:text-blue-600 transition-colors">
-                Our Work
-              </Link>
-            </li> */}
             <li>
               <Link href="/contact" className="hover:text-blue-600 transition-colors">
                 Contact
@@ -82,11 +81,6 @@ export default function Footer() {
                 UI/UX Design
               </Link>
             </li>
-            {/* <li>
-              <Link href="/services/api-integration" className="hover:text-blue-600 transition-colors">
-                API Integration
-              </Link>
-            </li> */}
           </ul>
         </div>
 
@@ -96,23 +90,45 @@ export default function Footer() {
             Connect With Us
             <span className="absolute -bottom-1 left-0 w-10 h-0.5 bg-blue-600 rounded"></span>
           </h3>
-          <div className="flex justify-center sm:justify-start space-x-4 mb-6">
-            {[
-              { Icon: FaFacebookF, color: "text-blue-600", bg: "bg-blue-100", href: "https://www.facebook.com/techdirectsupport" },
-              { Icon: FaInstagram, color: "text-pink-600", bg: "bg-pink-100", href: "https://www.instagram.com/techdirectsupport/" },
-              { Icon: FaLinkedinIn, color: "text-blue-600", bg: "bg-blue-100", href: "https://linkedin.com" },
-              { Icon: FaTwitter, color: "text-sky-600", bg: "bg-sky-100", href: "https://twitter.com" },
-            ].map(({ Icon, color, bg, href }, idx) => (
-              <Link
-                key={idx}
-                href={href}
-                target="_blank"
-                className={`p-3 rounded-full ${bg} ${color} hover:scale-110 hover:shadow-lg hover:bg-gradient-to-tr from-blue-600 to-indigo-600 hover:text-white transition`}
-              >
-                <Icon size={18} />
-              </Link>
-            ))}
-          </div>
+<div className="flex justify-center sm:justify-start space-x-4 mb-6">
+  {/* Facebook */}
+  <Link
+    href="https://www.facebook.com/techdirectsupport"
+    target="_blank"
+    className="p-3 rounded-full bg-blue-100 text-blue-600 transition transform hover:scale-110 hover:shadow-lg hover:bg-[#1877F2] hover:text-white"
+  >
+    <LuFacebook size={18} />
+  </Link>
+
+  {/* Instagram */}
+  <Link
+    href="https://www.instagram.com/techdirectsupport/"
+    target="_blank"
+    className="p-3 rounded-full bg-pink-100 text-pink-600 transition transform hover:scale-110 hover:shadow-lg hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white"
+  >
+    <LuInstagram size={18} />
+  </Link>
+
+  {/* LinkedIn */}
+  <Link
+    href="https://linkedin.com"
+    target="_blank"
+    className="p-3 rounded-full bg-blue-100 text-blue-600 transition transform hover:scale-110 hover:shadow-lg hover:bg-[#0A66C2] hover:text-white"
+  >
+    <LuLinkedin size={18} />
+  </Link>
+
+  {/* Twitter */}
+  <Link
+    href="https://twitter.com"
+    target="_blank"
+    className="p-3 rounded-full bg-sky-100 text-sky-600 transition transform hover:scale-110 hover:shadow-lg hover:bg-[#1DA1F2] hover:text-white"
+  >
+    <LuTwitter size={18} />
+  </Link>
+</div>
+
+
           <p className="text-sm sm:text-base text-gray-600">
             200 Gilchrist Drive, Macarthur Square, NSW 2560
           </p>
@@ -126,7 +142,7 @@ export default function Footer() {
       {/* Divider + Bottom Bar */}
       <div className="border-t border-gray-200 py-4 sm:py-6 text-center text-xs sm:text-sm text-gray-500 relative z-10">
         © {new Date().getFullYear()}{" "}
-        <span className="font-semibold text-gray-800"> Tech Direct Support.</span>. All rights reserved.
+        <span className="font-semibold text-gray-800"> Tech Direct Support.</span> All rights reserved.
       </div>
     </footer>
   );

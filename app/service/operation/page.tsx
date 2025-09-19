@@ -22,7 +22,10 @@ import {
   FaMedal,
   FaCheckCircle,
   FaQuoteLeft,
-  FaCogs
+  FaCogs ,FaFileInvoiceDollar,
+  FaMoneyCheckAlt,
+  FaCalendarCheck,
+  FaUserTie,
 } from "react-icons/fa";
 
 // ✅ Type-safe reusable fade-up animation
@@ -341,6 +344,74 @@ export default function OperationsPage() {
           </div>
         </div>
       </section>
+
+ {/* NDIS SPECIALIST SECTION */}
+<section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+  {/* Background decoration */}
+  <div className="absolute top-10 left-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-30 -z-10" />
+  <div className="absolute bottom-10 right-10 w-60 h-60 bg-indigo-100 rounded-full blur-3xl opacity-30 -z-10" />
+
+  <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    {/* Heading */}
+    <motion.div className="text-center mb-16" {...fadeUp(0)}>
+      <span className="inline-block text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+        NDIS Services
+      </span>
+      <h2 className="mt-4 text-3xl md:text-4xl font-extrabold text-gray-900">
+        Specialist <span className="text-blue-600">Solutions</span>
+      </h2>
+      <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
+        Expert support across <strong>Invoicing, Payroll, Rostering</strong> and <strong>Recruitment</strong>, 
+        leveraging trusted tools like <span className="font-semibold text-blue-600">Xero</span> for accuracy and compliance.
+      </p>
+    </motion.div>
+
+    {/* Grid */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          Icon: FaFileInvoiceDollar,
+          title: "Invoicing",
+          desc: "Seamless invoicing powered by Xero integration for compliance and speed.",
+          delay: 0.05,
+        },
+        {
+          Icon: FaMoneyCheckAlt,
+          title: "Payroll",
+          desc: "Automated payroll solutions ensuring accurate, timely staff payments.",
+          delay: 0.1,
+        },
+        {
+          Icon: FaCalendarCheck,
+          title: "Rostering",
+          desc: "Intelligent rostering tools that simplify scheduling and reduce errors.",
+          delay: 0.15,
+        },
+        {
+          Icon: FaUserTie,
+          title: "Recruitment",
+          desc: "Building reliable, compliant, and qualified teams through structured hiring.",
+          delay: 0.2,
+        },
+      ].map(({ Icon, title, desc, delay }, i) => (
+        <motion.div
+          key={i}
+          {...fadeUp(delay)}
+          className="group rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition transform text-center"
+        >
+          {/* Icon container */}
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+            <Icon className="text-2xl" />
+          </div>
+
+          <h3 className="mt-6 font-semibold text-lg text-gray-900">{title}</h3>
+          <p className="mt-3 text-sm text-gray-600">{desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
      
       {/* CTA */}

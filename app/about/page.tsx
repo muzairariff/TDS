@@ -240,49 +240,57 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* TEAM SECTION */}
-      <section className="bg-gray-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Meet Our Team</h2>
-          <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-            The passionate people who bring our vision to life.
-          </p>
 
-         <div className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-  {[
-    { name: "Jahanzaib Babar", role: "CEO & Founder", img: "/assets/images/teams/team-1.png" },
-    { name: "Michael Lee", role: "CTO", img: "/assets/images/team/team-2.png" },
-    { name: "Emily Davis", role: "Lead Designer", img: "/assets/images/team/team-3.png" },
-    { name: "James Smith", role: "Full Stack Developer", img: "/assets/images/team/team-4.png" },
-  ].map((member, i) => (
-               <motion.div
-      key={member.name}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: i * 0.08 }}
-      className="group relative bg-white shadow-md overflow-hidden hover:shadow-xl transition"
-    >
-      {/* Image */}
-      <div className="relative h-64 w-full overflow-hidden">
-        <Image
-          src={member.img}
-          alt={member.name}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
+{/* CEO MESSAGE SECTION */}
+<section className="bg-gray-50 py-20">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6">
+    
+    {/* Left: CEO Image */}
+    <div className="flex justify-center">
+      <div className="relative w-[280px] h-[340px] md:w-[320px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src="/assets/images/boss.png"
+          alt="CEO"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+        {/* Caption */}
+        {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
+          <h3 className="text-lg md:text-xl font-semibold text-white drop-shadow-md">
+            Jahanzaib Babar
+          </h3>
+          <p className="text-sm text-gray-200">CEO & Founder</p>
+        </div> */}
       </div>
-      {/* Text */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center w-[90%]">
-        <h3 className="text-lg font-semibold text-white drop-shadow-md">{member.name}</h3>
-        <p className="text-sm text-gray-200">{member.role}</p>
-      </div>
+    </div>
+
+    {/* Right: CEO Message */}
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      className="text-center lg:text-left"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        A Message from Our CEO
+      </h2>
+      <p className="mt-6 text-gray-700 leading-relaxed text-lg">
+        “At <span className="font-semibold text-blue-600">TECH DIRECT SUPPORT</span>, 
+        we believe in building solutions that empower businesses and individuals alike. 
+        Our journey has been fueled by passion, innovation, and a relentless pursuit of 
+        excellence. I am proud of our dedicated team that works tirelessly to bring our 
+        vision to life and create a lasting impact.”
+      </p>
+      <p className="mt-8 text-gray-600 font-medium italic">
+      Jahanzaib Babar, CEO & Founder
+      </p>
     </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+  </div>
+</section>
+
+
 
       {/* TESTIMONIALS */}
       <section className="py-16 sm:py-20 bg-white">

@@ -338,19 +338,17 @@ export default function CareersPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-14 sm:py-16 md:py-20 text-center">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold">Didn’t see your role?</h2>
-          <p className="mt-3 text-blue-100 text-base sm:text-lg">
-            We’re always meeting great people. Send your CV and a short note.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <Link
-              href="mailto:hr@techdirectsupport.com?subject=Open%20application"
-              className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-blue-700 hover:bg-blue-50 transition"
-            >
-              Introduce yourself
-            </Link>
+      <section className="bg-blue-600 text-white py-14 sm:py-16 md:py-20 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold [text-wrap:balance]">
+  Do not Find your role?
+</h2>
+<p className="mt-3 sm:mt-4 text-blue-100 text-base sm:text-lg">
+  Feel Free to Contact Us.
+</p>
+          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3.5 sm:gap-4">
+            <Link href="/contact" className="w-full sm:w-auto rounded-lg bg-white px-7 sm:px-8 py-3 text-base font-semibold text-blue-600 hover:bg-gray-100 transition text-center">Contact Us</Link>
+            {/* <Link href="/portfolio" className="w-full sm:w-auto rounded-lg border-2 border-white px-7 sm:px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition text-center">View Portfolio</Link> */}
           </div>
         </div>
       </section>
